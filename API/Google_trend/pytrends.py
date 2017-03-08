@@ -3,10 +3,6 @@
 #-------------------
 
 #-------------------
-import os
-import reuqests
-import gc
-import pandas as pd
 
 
 from __future__ import absolute_import, print_function, unicode_literals
