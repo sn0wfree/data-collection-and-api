@@ -10,32 +10,104 @@ This tool is for connecting the Google Trends Service
 import os
 import requests_cache
 import gc
-import matplotlib.pyplot as plt
+import copy
+# import matplotlib.pyplot as plt
 import pytrends
 import pandas as pd
+
+
+def read_a_file(file):
+    with open(file, 'r') as f:
+        f_collected = f.readlines()
+    return f_collected
+
+
+class ImportInfo():
+
+    def __init__(self):
+        self.accountinfo = {'google_username': '', 'google_password': ''}
+        self.list = []
+        self.locals_file_path = os.path.split(os.path.realpath(__file__))[0]
+        self.scan_files = os.listdir(self.locals_file_path)
+
+    def ImportListInfo(self):
+        self.list = self.ImportListInfobyFile()
+        if self.list == 0:
+            self.list = self.ImportListInfobyOtherFile(self)
+            self.list = self.ImportListInfobyTyple(self)
+        else:
+            pass
+        return self.list
+
+    def ImportListInfobyOtherFile(self):
+        a = read_a_file(file)
+
+    def ImportListInfobyFile(self):
+        keywords = []
+        if 'keywords.txt' in self.scan_files:
+            fi = read_a_file('keywords.txt')
+            for f in fi:
+                keywords.extend(f.split()[0].split(','))
+        elif 'keywords.csv' in self.scan_files:
+            fi = pd.read_csv('keywords.csv')
+            keywords = fi['tinker']
+
+        return keywords
+
+    def ImportListInfobyTyple(self):
+        pass
+
+    def ImportAccountInfo(self):
+        self.accountinfo = self.ImportAccountInfobyFile()
+        if self.accountinfo == 0:
+            self.accountinfo = self.ImportAccountInfobyType()
+        else:
+            pass
+        return self.accountinfo
+
+    def ImportAccountInfobyFile(self):
+
+        if 'account_info.txt' in self.scan_files:
+            account_info = [f.split()
+                            for f in read_a_file('account_info.txt')]
+            for info in account_info:
+                if 'google_username' in info:
+                    self.accountinfo['google_username'] = info[-1]
+
+                elif 'google_password' in info:
+                    self.accountinfo['google_password'] = info[-1]
+            return self.accountinfo
+
+        else:
+            return 0
+
+            # onlyfiles = [f for f in os.listdir(locals_file_path) if
+            # isfile(join(mypath, f))]
+    def ImportAccountInfobyType(self):
+
+        while '@' not in self.accountinfo['google_username']:
+            print 'Invald Google Account, please use correct Google Account'
+            google_username = raw_input(
+                'Please type in your Google Account Username: ')
+            google_password = raw_input(
+                'Please type in your Google Account Password: ')
+            self.accountinfo['google_username'] = google_username
+            self.accountinfo['google_password'] = google_password
+        return self.accountinfo
 
 
 def googleTrends():
     # set up a dic
     result = {}
-    #google_username = raw_input('Please type in your Google account username: ')
+    a = ImportInfo()
 
-    #google_password = raw_input('Please type in your Google account password: ')
-    google_account = 'default'
-    if google_account == 'default':
-        google_username = 'snowpythontest@gmail.com'
-        google_password = '19920815'
-    else:
-        pass
-    #search_list = raw_input('Please type in your search list: ')
-    search_list = ''
-
-    search_list_default = ['pizza', 'bagel']
+    google_username = a.ImportAccountInfo()['google_username']
+    google_password = a.ImportAccountInfo()['google_password']
+    search_list = a.ImportListInfo()
 
     pytrend = pytrends.TrendReq(
         google_username, google_password, hl='en-US', tz=360, custom_useragent=None)
-    if search_list == '':
-        search_list = search_list_default
+
     pytrend.build_payload(kw_list=search_list)
 
     # Interest Over Time
@@ -53,10 +125,10 @@ def googleTrends():
     # print related_queries_dict
 
     # Get Google Hot Trends data
-    #trending_searches_df = pytrend.trending_searches()
+    # trending_searches_df = pytrend.trending_searches()
 
     # Get Google Top Charts
-    #top_charts_df = pytrend.top_charts(cid='actors', date=201611)
+    # top_charts_df = pytrend.top_charts(cid='actors', date=201611)
 
     # Get Google Keyword Suggestions
     suggestions_dict = {}
@@ -68,5 +140,9 @@ def googleTrends():
 if __name__ == '__main__':
     requests_cache.install_cache(
         cache_name="googletrends_request_cache", backend="sqlite", expire_date=1800)
-    result = googleTrends()
-    result['interest by region'].boxplot()
+    # result = googleTrends()
+    a = ImportInfo()
+    b = read_a_file('keywords.txt')
+    print a.ImportAccountInfo(), a.ImportListInfobyFile()
+
+    # print result['interest by region']
