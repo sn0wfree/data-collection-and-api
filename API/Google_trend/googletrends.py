@@ -10,7 +10,7 @@ This tool is for connecting the Google Trends Service
 import os
 import requests_cache
 import gc
-import copy
+
 # import matplotlib.pyplot as plt
 import pytrends
 import pandas as pd
@@ -30,19 +30,54 @@ class ImportInfo():
         self.locals_file_path = os.path.split(os.path.realpath(__file__))[0]
         self.scan_files = os.listdir(self.locals_file_path)
 
-    def ImportListInfo(self):
-        self.list = self.ImportListInfobyFile()
-        if self.list == 0:
-            self.list = self.ImportListInfobyOtherFile(self)
+    def ImportListInfo(self,  GUI=False):
+
+        if self.ImportListInfobyFile() == 0:
+
+            # if self.ImportListInfobyOtherFile(self) == 0:
             self.list = self.ImportListInfobyTyple(self)
+            # else:
+            #    self.list = self.ImportListInfobyOtherFile(self)
+
         else:
-            pass
+            print 'Detected the local preference file (LIST INFORMATION)'
+            self.list = self.ImportListInfobyFile()
         return self.list
 
-    def ImportListInfobyOtherFile(self):
-        a = read_a_file(file)
+    def ImportListInfobyOtherFile(self, GUI_input=None, GUI=False):
+        if GUI == False:
+            other = raw_input('please type the path of the keywords list')
+        else:
+            other = GUI_input
+        file_type = other.split('.')[-1]
+        if file_type == 'txt':
+            keywords = []
+            fi = read_a_file(other)
+            for f in fi:
+                keywords.extend(f.split()[0].split(','))
+        elif file_type == 'xlsx' or file_type == 'xls':
+            outoutOFother = pd.read_excel(other)
+            keywords = outoutOFother['tinker']
+            ###
+        elif file_type == 'csv':
+            fi = pd.read_csv(other)
+            keywords = fi['tinker']
+        elif file_type == 'db':
+            import sqlite3
+            conn = sqlite3.connect(other)
+            table_name = pd.read_sql_query(
+                "SELECT name FROM sqlite_master WHERE type='table'ORDER BY name;", conn)
+            keywords = []
+            for tn in table_name.to_dict()['name'].values():
+                tab = pd.read_sql_query("SELECT tinker FROM %s" % tn, conn)
+                keywords.extend(tab.to_dict['tinker'].values())
 
-    def ImportListInfobyFile(self):
+        elif file_type == 'json':
+            pass
+
+        return keywords
+
+    def ImportListInfobyFile(self, GUI=False):
         keywords = []
         if 'keywords.txt' in self.scan_files:
             fi = read_a_file('keywords.txt')
@@ -51,21 +86,27 @@ class ImportInfo():
         elif 'keywords.csv' in self.scan_files:
             fi = pd.read_csv('keywords.csv')
             keywords = fi['tinker']
+        else:
+            keywords = 0
 
         return keywords
 
-    def ImportListInfobyTyple(self):
-        pass
+    def ImportListInfobyTyple(self, GUI=False):
+        self.list = raw_input(
+            "please type the tinker of targeted stocks, use comma separate:")
+        self.list = self.list.split(",")
+        return self.list
 
-    def ImportAccountInfo(self):
-        self.accountinfo = self.ImportAccountInfobyFile()
-        if self.accountinfo == 0:
+    def ImportAccountInfo(self, GUI=False):
+
+        if self.ImportAccountInfobyFile() == 0:
             self.accountinfo = self.ImportAccountInfobyType()
         else:
-            pass
+            print 'Detected the local preference file (GOOGLE ACCOUNT)'
+            self.accountinfo = self.ImportAccountInfobyFile()
         return self.accountinfo
 
-    def ImportAccountInfobyFile(self):
+    def ImportAccountInfobyFile(self, GUI=False):
 
         if 'account_info.txt' in self.scan_files:
             account_info = [f.split()
@@ -83,7 +124,7 @@ class ImportInfo():
 
             # onlyfiles = [f for f in os.listdir(locals_file_path) if
             # isfile(join(mypath, f))]
-    def ImportAccountInfobyType(self):
+    def ImportAccountInfobyType(self, GUI=False):
 
         while '@' not in self.accountinfo['google_username']:
             print 'Invald Google Account, please use correct Google Account'
@@ -100,9 +141,10 @@ def googleTrends():
     # set up a dic
     result = {}
     a = ImportInfo()
+    account = a.ImportAccountInfo()
 
-    google_username = a.ImportAccountInfo()['google_username']
-    google_password = a.ImportAccountInfo()['google_password']
+    google_username = account['google_username']
+    google_password = account['google_password']
     search_list = a.ImportListInfo()
 
     pytrend = pytrends.TrendReq(
@@ -140,9 +182,9 @@ def googleTrends():
 if __name__ == '__main__':
     requests_cache.install_cache(
         cache_name="googletrends_request_cache", backend="sqlite", expire_date=1800)
-    # result = googleTrends()
-    a = ImportInfo()
-    b = read_a_file('keywords.txt')
-    print a.ImportAccountInfo(), a.ImportListInfobyFile()
+    result = googleTrends()
+    print result['interest over time'], type(result['interest over time'])
+    result['interest over time'].to_csv('output.csv')
+    # print a.ImportAccountInfo(), a.ImportListInfobyFile()
 
     # print result['interest by region']

@@ -1,0 +1,2 @@
+google_username : snowpythontest@gmail.com
+google_password : 19920815
