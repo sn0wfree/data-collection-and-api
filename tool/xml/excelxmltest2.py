@@ -14,6 +14,7 @@ try:
     import xml.etree.cElementTree as ET
 except ImportError:
     import xml.etree.ElementTree as ET
+import lxml
 import sys
 import pandas as pd
 from linkedlist import *
@@ -52,27 +53,39 @@ def read_excel_xml(path):
     return workbook
 
 if __name__ == '__main__':
+    #sheets = read_excel_xml_linkedlist(xml_file_address)
+    # print sheets
 
     xml_file_address = '/Users/sn0wfree/Desktop/2010_2017students.xml'
-    'Workbook1.xml'
+    xml_file_address = '/Users/sn0wfree/Desktop/Workbook1.xml'
 
-    xmlfiletree = ET.ElementTree(file=xml_file_address)
+    # 导入文件
+    xml = lxml.etree.parse(xml_file_address)
+    # 获取节点
+    root = xml.getroot()
+    # 获取属性
+    import xml2csvtest
+    xml2csv(xml_file_address, '/Users/sn0wfree/Desktop/Workbook1.csv')
+
+
+'''
+    xmlfiletree = ET.parse(xml_file_address)
     root = xmlfiletree.getroot()
 
-    xmlconstruc = [childroot for childroot in root]
-    sheetnames = []
+    childroots = [childroot for childroot in root]
 
-    sheets = read_excel_xml_linkedlist(xml_file_address)
 
-    print sheets
 
-    for sheets in xmlconstruc:
+    for childroot in childroots:
 
-        if type(sheets.attrib) is not dict:
-            print type(sheets.attrib)
+        if type(childroot.attrib) is not dict:
+            print type(childroot.attrib)
         else:
-            if sheets.attrib.has_key('{urn:schemas-microsoft-com:office:spreadsheet}Name'):
+
+            # name
+            if childroot.attrib.has_key('{urn:schemas-microsoft-com:office:spreadsheet}Name'):
                 sheetnames.append(
-                    sheets.attrib['{urn:schemas-microsoft-com:office:spreadsheet}Name'])
+                    childroot.attrib['{urn:schemas-microsoft-com:office:spreadsheet}Name'])
 
     print sheetnames
+'''
