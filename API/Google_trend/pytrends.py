@@ -62,6 +62,7 @@ class TrendReq(object):
         self.ses = requests.session()
         login_html = self.ses.get(
             self.url_login, headers=self.custom_useragent)
+
         soup_login = BeautifulSoup(login_html.content, "lxml").find(
             'form').find_all('input')
         form_data = dict()
@@ -73,7 +74,7 @@ class TrendReq(object):
         form_data['Passwd'] = self.password
         self.ses.post(self.url_auth, data=form_data)
 
-    def build_payload(self, kw_list, cat=0, timeframe='today 5-y', geo='', gprop=''):
+    def build_payload(self, kw_list, cat=0, timeframe="today 5-y", geo='', gprop=''):
         """Create the payload for related queries, interest over time and interest by region"""
         token_payload = dict()
         self.kw_list = kw_list
@@ -86,11 +87,16 @@ class TrendReq(object):
         for kw in self.kw_list:
             keyword_payload = {'keyword': kw,
                                'time': timeframe, 'geo': self.geo}
+
             token_payload['req']['comparisonItem'].append(keyword_payload)
+        print (token_payload['req'])
+
         # requests will mangle this if it is not a string
         token_payload['req'] = json.dumps(token_payload['req'])
+
         # get tokens
         self._tokens(token_payload)
+
         return
 
     def _tokens(self, token_payload):
@@ -104,12 +110,14 @@ class TrendReq(object):
         # strip off garbage characters that break json parser
         widget_json = req.text[4:]
         widget_dict = json.loads(widget_json)['widgets']
+        #print (widget_dict)
         # order of the json matters...
         first_region_token = True
         # assign requests
         for widget in widget_dict:
             if widget['title'] == 'Interest over time':
                 self.interest_over_time_widget = widget
+                print (widget)
             if widget['title'] == 'Interest by region' and first_region_token:
                 self.interest_by_region_widget = widget
                 first_region_token = False

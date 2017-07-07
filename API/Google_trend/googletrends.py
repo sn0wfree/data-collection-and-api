@@ -83,6 +83,10 @@ class ImportInfo():
             fi = read_a_file('keywords.txt')
             for f in fi:
                 keywords.extend(f.split()[0].split(','))
+        elif 'keywords2.txt' in self.scan_files:
+            fi = read_a_file('keywords2.txt')
+            for f in fi:
+                keywords.extend(f.split()[0].split(','))
         elif 'keywords.csv' in self.scan_files:
             fi = pd.read_csv('keywords.csv')
             keywords = fi['tinker']

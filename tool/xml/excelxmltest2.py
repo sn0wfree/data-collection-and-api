@@ -18,6 +18,7 @@ import lxml
 import sys
 import pandas as pd
 from linkedlist import *
+import xml2csvtest
 
 from bs4 import BeautifulSoup
 
@@ -64,7 +65,7 @@ if __name__ == '__main__':
     # 获取节点
     root = xml.getroot()
     # 获取属性
-    import xml2csvtest
+
     xml2csv(xml_file_address, '/Users/sn0wfree/Desktop/Workbook1.csv')
 
 
