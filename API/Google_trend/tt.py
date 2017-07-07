@@ -259,8 +259,8 @@ def makedirs(names, path,link):
         directory = path + link+ name
         if not os.path.exists(directory):
                 os.makedirs(directory)
-            else:
-                pass
+        else:
+            pass
 
     
 def downlaod(dates,keywords,link,locals_file_path):
