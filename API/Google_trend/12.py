@@ -1,3 +1,0 @@
-{"time":"2004-01-01 2004-08-31",
- "resolution":"DAY",
- "locale":"en-GB","comparisonItem":[{"geo":{},"complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"AON"}]}},{"geo":{},"complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"APA"}]}},{"geo":{},"complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"AIV"}]}},{"geo":{},"complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"APIC"}]}},{"geo":{},"complexKeywordsRestriction":{"keyword":[{"type":"BROAD","value":"APOG"}]}}],"requestOptions":{"property":"","backend":"IZG","category":0}}
