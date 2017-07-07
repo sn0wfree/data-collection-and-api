@@ -256,7 +256,7 @@ def makedirs(names, path,link):
                 pass
             
     elif isinstance(names,str):
-        directory = path + link+ name
+        directory = path + link+ names
         if not os.path.exists(directory):
                 os.makedirs(directory)
         else:
@@ -280,11 +280,11 @@ def downlaod(dates,keywords,link,locals_file_path):
 
 def progress_test(counts,lenfile,speed):
     bar_length=20
-    eta=time.time()+speed*counts
+    
     process =counts/float(lenfile)
 
-    ETA=datetime.datetime.fromtimestamp(eta)
-    hashes = '#' * int(precent * bar_length)
+    ETA=speed*(lenfile-counts)/float(60)
+    hashes = '#' * int(process * bar_length)
     spaces = ' ' * (bar_length - len(hashes))
     sys.stdout.write("""\r%d%%|%s|completed %d *5 projects|Speed : %.4f s/5 projects|ETA: %s """ % (process*100,hashes + spaces,counts,speed,ETA))
 
@@ -312,6 +312,7 @@ if __name__ == '__main__':
 
     
     #keywords = ['AON', 'APA', 'AIV', 'APIC', 'APOG']
+    uncompleted_keywords=keywords
     key=chunks(keywords, 5)
     l_orign =len(key)
     l=l_orign
@@ -319,7 +320,15 @@ if __name__ == '__main__':
     
     for keywords in key:
         f = time.time()
-        downlaod(dates,keywords,link,locals_file_path)
+        abnorl=True
+        while abnorl:
+            try:
+                downlaod(dates,keywords,link,locals_file_path)
+            except Exception:
+                time.sleep(10)
+            else:
+                abnorl=False
+
         time.sleep(1)
         count=count+1
         workingtime=time.time()-f
@@ -335,6 +344,11 @@ if __name__ == '__main__':
         closingtime = time.time()-f
         l=l-1
         speed=closingtime
+        for keyword in keywords:
+            uncompleted_keywords.remmove(keyword)
+        write_txt(uncompleted_keywords, target)
+
+
         
         progress_test(l_orign-l,l_orign,speed)
         
