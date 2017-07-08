@@ -3,6 +3,9 @@ import os
 import platform
 import webbrowser
 import time
+import random
+import requests_cache
+
 
 import shutil
 import copy
@@ -53,6 +56,7 @@ def get_data(bucket_start_date, bucket_end_date, keywords):
 
     explore_URL = 'https://trends.google.com/trends/api/explore?hl={0}&tz={1}&req={2}'.format(
         hl, tz, json.dumps(req).replace(' ', '').replace('+', ' '))
+    # print explore_URL
     return requests.get(explore_URL).text
 
 
@@ -72,6 +76,7 @@ def get_csv_request(response_text):
 
 def get_csv(response_text):
     request = get_csv_request(response_text)
+
     # print request
     token = get_token(response_text)
 
@@ -84,6 +89,7 @@ def get_csv(response_text):
 def parse_csv(csv_contents, keywords):
     lines = csv_contents.split('\n')
     datas = lines[3:-1]
+    # print lines
 
     col = lines[2].split(',')
     for colnumber in xrange(len(col)):
@@ -171,6 +177,7 @@ def HandleGTs(start_date, end_date, keywords):
     end_date_dt = datetime.strptime(end_date, '%Y-%m-%d')
 
     resp_text = get_data(start_date_dt, end_date_dt, keywords)
+    # print resp_text
     df = parse_csv(get_csv(resp_text), keywords)
     return df
 
@@ -241,7 +248,7 @@ def write_txt(fi, targetpath):
             f.write(ff + '\n')
 
 
-def scraGoogleTrends_2yearPeriod(date, keywords, time2sleep=0.9):
+def scraGoogleTrends_2yearPeriod(date, keywords, time2sleep=0.5):
     df_temp0 = HandleGTs(date[0][0], date[0][1], keywords)
     df_temp1 = HandleGTs(date[1][0], date[1][1], keywords)
     df_temp2 = HandleGTs(date[2][0], date[2][1], keywords)
@@ -289,7 +296,7 @@ def progress_test(counts, lenfile, speed):
     ETA = speed * (lenfile - counts) / float(60)
     hashes = '#' * int(process * bar_length)
     spaces = ' ' * (bar_length - len(hashes))
-    sys.stdout.write("""\r%d%%|%s|completed %d *5 projects|Speed : %.4f s/5 projects|ETA: %s """ %
+    sys.stdout.write("""\r%d%%|%s|completed %d *5 projects|Speed : %.4f s/5 projects|ETA: %s min""" %
                      (process * 100, hashes + spaces, counts, speed, ETA))
 
     #sys.stdout.write("\rthis spider has already read %d projects, speed: %.4f/projects" % (counts,f2-f1))
@@ -299,11 +306,13 @@ def progress_test(counts, lenfile, speed):
 
 if __name__ == '__main__':
     gc.enable()
+    requests_cache.install_cache(
+        cache_name="googletrends_request_cache", backend="sqlite", expire_date=300)
 
     link = findoperation()
 
     locals_file_path = os.path.split(os.path.realpath(__file__))[0]
-    target = locals_file_path + link + '1.txt'
+    target = locals_file_path + link + '2.txt'
     makedirs('data', locals_file_path, link)
 
     #target = '/Users/sn0wfree/Documents/python_projects/data_collection/API/Google_trend/1.txt'
@@ -315,23 +324,35 @@ if __name__ == '__main__':
     #da_temp = '/Users/sn0wfree/Documents/python_projects/data_collection/API/Google_trend/'
     dates = chunks(DateProduce(2004), 3)
 
-    #keywords = ['AON', 'APA', 'AIV', 'APIC', 'APOG']
+    #keywords = ['FDEF', 'FFBC' ,'THFF' ,'FFIN' ,'FFNW']
     uncompleted_keywords = keywords
     key = chunks(keywords, 5)
+    # print key
     l_orign = len(key)
     l = l_orign
     count = 0
+    request_time = 1
 
     for keywords in key:
         f = time.time()
         abnorl = True
+
+        # downlaod(dates,keywords,link,locals_file_path)
+
         while abnorl:
+
             try:
                 downlaod(dates, keywords, link, locals_file_path)
-            except Exception:
-                time.sleep(10)
+            except Exception as e:
+                print e
+                request_time = request_time + 1
+                time.sleep(60)
+                if request_time > 60:
+                    raise 'Quota limit'
+
             else:
-                abnorl = False
+                request_time = 1
+                break
 
         time.sleep(1)
         count = count + 1
@@ -339,7 +360,7 @@ if __name__ == '__main__':
         if workingtime <= 60:
             time.sleep(5)
         else:
-            time.sleep(random.randrange(1, 2, 0.1))
+            time.sleep(1)
         if count > 50:
             count = 0
             time.sleep(10)

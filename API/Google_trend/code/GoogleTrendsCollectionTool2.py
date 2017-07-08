@@ -351,7 +351,12 @@ if __name__ == '__main__':
 
                 print e
                 time.sleep(request_time * 10)
+                if request_time > 50:
+                    raise 'Quota limit'
+
             else:
+                request_time = 1
+
                 break
 
         time.sleep(1)
