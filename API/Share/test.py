@@ -246,7 +246,7 @@ def progress_test(counts, lenfile, speed):
     ETA = speed * (lenfile - counts) / float(60)
     hashes = '#' * int(process * bar_length)
     spaces = ' ' * (bar_length - len(hashes))
-    sys.stdout.write("""\r%d%%|%s|completed %d *5 projects|Speed : %.4f s/5 projects|ETA: %s min""" %
+    sys.stdout.write("""\r%d%%|%s|completed %d * projects|Speed : %.4f s/5 projects|ETA: %s min""" %
                      (process * 100, hashes + spaces, counts, speed, ETA))
 
     
