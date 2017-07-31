@@ -260,16 +260,17 @@ if __name__ == '__main__':
     startdate = '20040115'
     enddate = '20170630'
     Symbol = 'SRCE'
+    target ='1'
 
     # import keywords
-    keywords = importkeywords()
+    keywords = importkeywords(target+'.txt')
 
     # create database
     momeory = 0
     if momeory == 1:
         conn = sqlite3.connect(":memory:")
     else:
-        conn = sqlite3.connect("1.db")
+        conn = sqlite3.connect(target+".db")
 
     ticker_colelcted = collectedtablename(conn)
     wrongticker = importkeywords('error.txt')
