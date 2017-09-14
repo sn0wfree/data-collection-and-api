@@ -301,7 +301,7 @@ def progress_test(counts, lenfile, speed):
     ETA = speed * (lenfile - counts) / float(60)
     hashes = '#' * int(process * bar_length)
     spaces = ' ' * (bar_length - len(hashes))
-    sys.stdout.write("""\r%d%%|%s|completed %d *5 projects|Speed : %.4f s/5 projects|ETA: %s min""" %
+    sys.stdout.write("""\r%d%%|%s|completed %d * projects|Speed : %.4f s/ projects|ETA: %s min""" %
                      (process * 100, hashes + spaces, counts, speed, ETA))
 
     
@@ -323,7 +323,7 @@ if __name__ == '__main__':
     dates = chunks(DateProduce(2004), 3)
 
     #keywords = ['FDEF', 'FFBC' ,'THFF' ,'FFIN' ,'FFNW']
-    key = chunks(keywords, 5)
+    key = chunks(keywords, 1)
     uncompleted_keywords = keywords
     
     # print key

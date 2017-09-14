@@ -6,3 +6,15 @@
 *.pyc
 
 *.pyc
+
+*.csv
+
+*.xlsx
+
+*.db
+
+*.h5
+
+*.zip
+
+*.db

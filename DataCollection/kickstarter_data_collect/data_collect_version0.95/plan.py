@@ -1411,7 +1411,6 @@ def progress_test(counts,lenfile,speed,w):
 
 
 
-
 if __name__ == '__main__':
     global y
     print '***********************************************************'
@@ -1479,6 +1478,9 @@ if __name__ == '__main__':
         pathfile=publicpath+ '/%s.zip' % now
         print 'compress process completed'
         zipafilefordelivery(pathfile,target)
+
+
+
 
         print 'begin sending email'
         mail_username='linlu19920815@gmail.com'

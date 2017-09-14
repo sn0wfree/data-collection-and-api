@@ -20,7 +20,7 @@ import time,random,sys
 import requests
 import requests_cache
 import sqlite3
-
+from multiprocessing import Pool
 
 def findoperation():
     OperationSystem = platform.system()
@@ -33,9 +33,9 @@ def findoperation():
     return link
 
 
-def load_quote(ticker, startdate, enddate):
-    # startdate = '20040115'
-    # enddate = '20170617'
+def load_quote(ticker, startdate='20040115', enddate='20170630'):
+    startdate = '20040115'
+    enddate = '20170630'
 
     a = yqd.load_yahoo_quote(ticker, startdate, enddate)
     return a
@@ -51,6 +51,7 @@ def test():
 
 
 def create_table(conn, Symbol):
+
     try:
         create_tb_cmd = '''
         CREATE TABLE IF NOT EXISTS %s
@@ -167,40 +168,76 @@ def dowloadandinsert(conn,Symbol,startdate, enddate):
     while 1:
 
         try:
-            stocks = load_quote(Symbol, startdate, enddate)
-            output = [tuple(stock.encode("utf-8").split(',')) for stock in stocks]
-            if output[0][0] == 'Date':
-                del output[0]
-            if output[-1][0] == "":
-                del output[-1]
-            else:
-                pass
-            # print output
+            if isinstance(Symbol,str):
+                
+                stocks = load_quote(Symbol, startdate, enddate)
+                output = [tuple(stock.encode("utf-8").split(',')) for stock in stocks]
+                if output[0][0] == 'Date':
+                    del output[0]
+                if output[-1][0] == "":
+                    del output[-1]
+                else:
+                    pass
+                # print output
 
-            # create table
+                # create table
 
-            create_table(conn, Symbol)
-            # insert data
+                create_table(conn, Symbol)
+                # insert data
 
-            insert_dt(conn, output, Symbol)
-            conn.commit()
+                insert_dt(conn, output, Symbol)
+                conn.commit()
+            elif isinstance(Symbol,list):
+
+                tpool = Pool(5)  
+                stocks_pool = tpool.map(load_quote, Symbol)  # 将任务交给线程池，所有url都完成后再继续执行，与python的map方法类似
+                Symbol_stocks =zip(Symbol,stocks_pool)
+                for Symb,stocks in stocks_pool:
+                    
+                    output = [tuple(stock.encode("utf-8").split(',')) for stock in stocks]
+                    if output[0][0] == 'Date':
+                        del output[0]
+                    if output[-1][0] == "":
+                        del output[-1]
+                    else:
+                        pass
+                    # print output
+
+                    # create table
+
+                    create_table(conn, Symbol)
+                    # insert data
+
+                    insert_dt(conn, output, Symbol)
+                    conn.commit()
+                    time.sleep(random.randint(1,20))
+                time.sleep(30)
+
+            
 
         except Exception as e:
             #print e,e.errno,dir(e)
-            if e.code == 404 :
+            print dir(e),e.value
+            if  e ==None:
+                pass
+
+            
+            elif e.code == 404 :
 
                 print 'wrong ticker'
                 write_txt_change(Symbol, 'error.txt')
                 break
 
             elif e.code ==401:
-                print e
+                
                 time.sleep(60)
+            
+
            
                 
             request_time = request_time + 1
             time.sleep(5 + request_time * 5)
-            if request_time > 60:
+            if request_time > 10:
                 raise 'Quota limit'
 
         else:
@@ -208,7 +245,7 @@ def dowloadandinsert(conn,Symbol,startdate, enddate):
             break
     
     
-    time.sleep(random.randint(5, 20))
+    time.sleep(random.randint(1, 20))
 
 def write_txt_change(ticker, targetpath):
     Errorkeywords=[]
@@ -252,6 +289,14 @@ def progress_test(counts, lenfile, speed):
     
     sys.stdout.flush()
 
+def chunks(target, n):
+    if isinstance(target, list):
+        date1 = [target[i:i + n] for i in xrange(0, len(target), n)]
+    else:
+        date1 = []
+        raise ValueError, "Wrong type,I need a list."
+    return date1
+
 if __name__ == '__main__':
     requests_cache.install_cache(
         cache_name="shareprice_request_cache", backend="sqlite", expire_date=300)
@@ -260,7 +305,7 @@ if __name__ == '__main__':
     startdate = '20040115'
     enddate = '20170630'
     Symbol = 'SRCE'
-    target ='1'
+    target ='3'
 
     # import keywords
     keywords = importkeywords(target+'.txt')
@@ -276,11 +321,17 @@ if __name__ == '__main__':
     wrongticker = importkeywords('error.txt')
 
 
+
     Symbols = list(set(keywords) ^ set(ticker_colelcted) ^ set(wrongticker))
     counts=0
     lenn =len(Symbols)
+    
+
     for Symbol in Symbols:
+
         f=time.time()
+        startdate = '20040115'
+        enddate = '20170630'
 
 
         dowloadandinsert(conn,Symbol,startdate, enddate)
