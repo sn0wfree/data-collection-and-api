@@ -66,15 +66,18 @@ class Application(Tk):
 
     def Widgets(self):
 
-        keyFrame = Frame(self)
-        keyFrame.pack(side='left')
-
-        LabelFrame(self, text="This is a LabelFrame").pack()
+        keyFrame = LabelFrame(self, text="Key Parameter Area", labelanchor='n')
+        keyFrame.pack(side='left', expand="yes")
 
         menuFrame = Frame(self)
         menuFrame.pack(side='top', fill=X)
 
+        outputFrame = LabelFrame(
+            self, text='Command Output Area', labelanchor='n')
+        outputFrame.pack(side='bottom', expand="yes")
+
         self.KeyInfo(keyFrame)
+    # def MenuInfo(self):
 
     def KeyInfo(self, keyFrame):
 
