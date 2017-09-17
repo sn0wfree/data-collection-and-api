@@ -11,8 +11,8 @@ import pandas as pd
 import re
 import gc
 import csv
-import numpy as np
-from pandas import DataFrame
+#import numpy as np
+#from pandas import DataFrame
 import sys
 import json
 import urllib
@@ -432,7 +432,13 @@ def main(target, category, dates):
     link = findoperation()
 
     locals_file_path = os.path.split(os.path.realpath(__file__))[0]
-    target = locals_file_path + link + 'keywords.txt'
+
+    if locals_file_path == os.path.split(os.path.realpath(target))[0]:
+        pass
+    else:
+        locals_file_path = os.path.split(os.path.realpath(target))[0]
+
+    #target = locals_file_path + link + 'keywords.txt'
     keywords = ImportListInfobyFile(locals_file_path, target)
     makedirs('data', locals_file_path, link)
     if dates == False:
