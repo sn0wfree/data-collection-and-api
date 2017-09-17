@@ -1,5 +1,0 @@
-('/Users/sn0wfree/Documents/python_projects/data_collection/API/Google_trend/Source/build/gui/singledispatch-3.4.0.3-py2.7.egg',
- None,
- set(['*.py', '*.pyc', '*.pyd', '*.pyo', '*.so', 'EGG-INFO']),
- 'DATA',
- [])
