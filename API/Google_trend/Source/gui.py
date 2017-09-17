@@ -143,10 +143,10 @@ class Application(Tk):
             keywords = self.keywordsInput.get()
             geo = self.geoInput.get()
             category = self.categoryInput.get()
-            # print 'date:', dates
-            # print 'keywords:', keywords
-            # print 'geo:', geo
-            # print 'category:', category
+            print 'date:', dates
+            print 'keywords:', keywords
+            print 'geo:', geo
+            print 'category:', category
             self.subthread = thread_it(GTCTWG.main, keywords, category, dates)
 
             #GTCTWG.main(keywords, category, dates)
