@@ -10,6 +10,8 @@ This tool is for connecting the Google Trends Service
 import os
 import platform
 from Tkinter import *
+import copy
+import threading
 import gc
 import tkMessageBox
 import tkFileDialog
@@ -17,19 +19,6 @@ import calendar
 import GoogleTrendsCollectionToolWithGui as GTCTWG
 
 # import googletrends
-
-
-def toggle(t_btn):
-    '''
-    use
-    t_btn.config('text')[-1]
-    to get the present state of the toggle button
-    '''
-    if t_btn.config('text')[-1] == 'True':
-        t_btn.config(text='False')
-
-    else:
-        t_btn.config(text='True')
 
 
 def findoperation():
@@ -72,8 +61,9 @@ class Application(Tk):
 
     def __init__(self, parent=None):
         Tk.__init__(self, parent)
+        self.subthread = 'Disable'
 
-        self.programstatus = 'Disable'
+        self.programstatus = GTCTWG.__status__
 
         self.Widgets()
 
@@ -104,7 +94,7 @@ class Application(Tk):
 
         # self.tiplabel = Label(
         #    keyFrame, text='Tip:Date Format: 20040101-20170101 or 2004-2017 or 2004', bd=1, relief=SUNKEN)
-        #self.tiplabel.grid(row=0, column=2, columnspan=2)
+        # self.tiplabel.grid(row=0, column=2, columnspan=2)
 
         self.keylabel = Label(keyFrame, text='Keywords:')
         self.keylabel.grid(row=1, column=0)
@@ -137,27 +127,38 @@ class Application(Tk):
         self.quitButton.grid(row=4, column=2,  ipadx=10)
 
     def stopprocess(self):
-        if self.programstatus == 'Disable':
-            pass
-        elif self.programstatus == 'Enable':
-            self.programstatus = 'Disable'
-            pass
+        if self.programstatus.get() != 0:
+            self.programstatus.set(0)
+            self.subthread._Thread__stop()
+
         else:
             pass
 
     def gettext(self):
-        if self.programstatus == 'Disable':
-            self.programstatus = 'Enable'
-            text = self.dateInput.get()
+        print GTCTWG.__status__.get()
+
+        if self.programstatus.get() == 0:
+            self.programstatus.set(1)
+            dates = self.dateInput.get()
             keywords = self.keywordsInput.get()
             geo = self.geoInput.get()
             category = self.categoryInput.get()
-            print 'text:', text
-            print 'keywords:', keywords
-            print 'geo:', geo
-            print 'category:', category
+            # print 'date:', dates
+            # print 'keywords:', keywords
+            # print 'geo:', geo
+            # print 'category:', category
+            self.subthread = thread_it(GTCTWG.main, keywords, category, dates)
+
+            #GTCTWG.main(keywords, category, dates)
         else:
             pass
+
+    def browsefilepath(self):
+
+        filename = tkFileDialog.askopenfilename(
+            initialdir=os.path.split(os.path.realpath(__file__))[0])
+        self.keywordsInput.delete(0, END)
+        self.keywordsInput.insert(END, filename)
 
     def detectkeywords(self):
         locals_file_path = os.path.split(os.path.realpath(__file__))[0]
@@ -168,19 +169,26 @@ class Application(Tk):
         else:
             return 'Not found'
 
-    def browsefilepath(self):
 
-        filename = tkFileDialog.askopenfilename(
-            initialdir=os.path.split(os.path.realpath(__file__))[0])
-        self.keywordsInput.delete(0, END)
-        self.keywordsInput.insert(END, filename)
+def thread_it(func, *args):
+
+    # 创建
+    t = threading.Thread(target=func, args=args)
+    # 守护 !!!
+    t.setDaemon(False)
+    # 启动
+    t.start()
+    # 阻塞--卡死界面！
+    # t.join()
+    return t
 
 
 if __name__ == '__main__':
-    print GTCTWG.__status__
+
     app = Application()
     # 设置窗口标题:
     app.title('GoogleTrendsIndex-Download APP(Simple Interface)')
+    # print app.programstatus
 
     # 主消息循环:
     app.mainloop()

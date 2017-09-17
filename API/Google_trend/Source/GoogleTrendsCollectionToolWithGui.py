@@ -19,7 +19,31 @@ import urllib
 from datetime import datetime
 import requests
 
-__status__ = 'Disbale'
+
+class Pointer():
+
+    def __init__(self, obj):
+        self.obj = obj
+
+    def get(self):
+        return self.obj
+
+    def set(self, obj):
+        self.obj = obj
+
+
+__status__ = Pointer(0)
+
+
+def statuscheck(__status__):
+
+    if __status__.get() == 0:
+        print 'Will Stop'
+        __status__.set(0)
+
+    else:
+        pass
+    return __status__.get()
 
 
 def get_data(bucket_start_date, bucket_end_date, keywords, category=7):
@@ -414,13 +438,14 @@ def main(target, category, dates):
     if dates == False:
         dates = chunks(DateProduce(2004), 3)
     else:
-        dates = dates
+        dates = chunks(DateProduce(2004), 3)
     if category != 7:
         category = category
     else:
         category = 7
 
     # keywords = ['FDEF', 'FFBC' ,'THFF' ,'FFIN' ,'FFNW']
+    #key = chunks(keywords, 1)
     key = chunks(keywords, 1)
     uncompleted_keywords = keywords
 
@@ -430,21 +455,26 @@ def main(target, category, dates):
     count = 0
     request_time = 1
 
-    for keywords in key:
+    for keyword in key:
         f = time.time()
         abnorl = True
+        if statuscheck(__status__) == 0:
+            break
+        else:
+            pass
 
         # downlaod(dates,keywords,link,locals_file_path)
 
         while abnorl:
 
             try:
-                downlaod(dates, keywords, link, locals_file_path, category)
+
+                downlaod(dates, keyword, link, locals_file_path, category)
             except Exception as e:
                 print e
                 request_time = request_time + 1
-                time.sleep(60)
-                if request_time > 60:
+                time.sleep(30)
+                if request_time > 10:
                     raise 'Quota limit'
 
             else:
@@ -472,9 +502,14 @@ def main(target, category, dates):
         gc.collect()
 
         progress_test(l_orign - l, l_orign, speed)
-
-    print 'download finished'
+    if statuscheck(__status__) == 0:
+        print 'Interrupted'
+    else:
+        print 'download finished'
+        __status__.set(0)
 
 
 if __name__ == '__main__':
-    main()
+    dates, keyword, link, locals_file_path, category = 2004, 'ORI', '/', '/Users/sn0wfree/Documents/python_projects/data_collection/API/Google_trend/Source', 7
+    # main()
+    downlaod(dates, keyword, link, locals_file_path, category)
