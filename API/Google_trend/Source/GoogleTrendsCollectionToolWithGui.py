@@ -19,6 +19,8 @@ import urllib
 from datetime import datetime
 import requests
 
+__status__ = 'Disbale'
+
 
 def get_data(bucket_start_date, bucket_end_date, keywords, category=7):
     geo = ''
@@ -153,16 +155,22 @@ def findoperation():
 
 
 def DateProduce(begindate):
+    begindate = str(begindate)
     if len(begindate) == 4:
         beginyear = begindate
         return yearonly(beginyear)
-    elif len(begindate) == 6:
-        beginyear = begindate[0:4]
-        beginmonth = begindate[4:]
-    elif len(begindate) == 8:
+    elif len(begindate) >= 6:
         beginyear = begindate[0:4]
         beginmonth = begindate[4:6]
-        beginday = begindate[6:]
+        return yearandmonth(beginyear, beginmonth)
+
+
+def ChangeInt2StrDay(date):
+    if int(date) < 10:
+        day = '0' + str(int(date))
+    else:
+        day = str(int(date))
+    return day
 
 
 def getDays(year, month):
@@ -182,38 +190,54 @@ def getDays(year, month):
 
 
 def yearandmonth(beginyear, beginmonth):
+    da = []
     if int(beginyear) < datetime.now().year:
         years = range(int(beginyear), datetime.now().year + 1, 1)
         da = yearonly(int(beginyear) + 1)
-        if int(beginmonth) < 6:
+        if int(beginmonth) <= datetime.now().month:
+            if int(beginmonth) <= 6:
 
-            da.append((str(beginyear) + '-01-01',
-                       str(beginyear) + '-0' + str(beginmonth) + '-' + str(getDays(beginyear, beginmonth))))
-        else:
-            if len(str(beginmonth)) = 1:
-                month = '0' + str(beginmonth)
+                da.append((str(beginyear) + '-' + ChangeInt2StrDay(beginmonth) + '-01',
+                           str(beginyear) + '-06-30'))
+                da.append((str(beginyear) + '-07-01',
+                           str(beginyear) + '-12-31'))
             else:
-                month = str(beginmonth)
-            da.append((str(beginyear) + '-01-01', str(beginyear) + '-06-30'))
-            da.append((str(beginyear) + '-07-01',
-                       str(beginyear) + '-' + month + '-' + str(getDays(beginyear, beginmonth))))
+
+                da.append((str(beginyear) + ChangeInt2StrDay(beginmonth) + '-01',
+                           str(beginyear) + '-12-31'))
+
+        else:
+            raise ValueError('Wrong month, you choose the future month')
 
     elif int(beginyear) == datetime.now().year:
-        years = [datetime.now().year]
-        if int(beginmonth) < datetime.now().month:
 
-        elif int(beginmonth) = datetime.now().month:
-            month = [datetime.now().month]
+        if int(beginmonth) <= datetime.now().month:
+            if int(beginmonth) <= 6 and datetime.now().month <= 6:
+
+                da.append((str(beginyear) + '-' + ChangeInt2StrDay(beginmonth) + '-01',
+                           str(beginyear) + '-0' + ChangeInt2StrDay(datetime.now().month) + '-' + ChangeInt2StrDay(datetime.now().day)))
+
+            elif int(beginmonth) <= 6 and datetime.now().month > 6:
+                da.append((str(beginyear) + '-' + ChangeInt2StrDay(beginmonth) +
+                           '-01', str(beginyear) + '-06-30'))
+
+                da.append((str(beginyear) + '-07-01',
+                           str(beginyear) + '-0' + ChangeInt2StrDay(datetime.now().month) + '-' + ChangeInt2StrDay(datetime.now().day)))
+            elif int(beginmonth) > 6:
+                da.append((str(beginyear) + '-' + ChangeInt2StrDay(beginmonth) + '-01',
+                           str(beginyear) + '-0' + ChangeInt2StrDay(datetime.now().month) + '-' + ChangeInt2StrDay(datetime.now().day)))
+
         else:
-            raise ValueError('Wrong year, you choose the future month')
+            raise ValueError('Wrong month, you choose the future month')
 
     else:
         raise ValueError('Wrong year, you choose the future year')
+    return da
 
 
 def yearonly(beginyear):
     da = []
-    #years = [int(beginyear) + i for i in range(14)]
+    # years = [int(beginyear) + i for i in range(14)]
 
     if int(beginyear) < datetime.now().year:
         years = range(int(beginyear), datetime.now().year + 1, 1)
@@ -226,12 +250,12 @@ def yearonly(beginyear):
         if year == datetime.now().year:
             if datetime.now().month <= 6:
                 da.append((str(year) + '-01-01', str(year) +
-                           '-%d-%d'(datetime.now().month, datetime.now().day)))
+                           '-%d-%d' % (datetime.now().month, datetime.now().day)))
             else:
                 da.append((str(year) + '-01-01', str(year) + '-06-30'))
 
                 da.append((str(year) + '-07-01', str(year) +
-                           '-%d-%d'(datetime.now().month, datetime.now().day)))
+                           '-%d-%d' % (datetime.now().month, datetime.now().day)))
 
         elif year < datetime.now().year:
             da.append((str(year) + '-01-01', str(year) + '-06-30'))
@@ -396,7 +420,7 @@ def main(target, category, dates):
     else:
         category = 7
 
-    #keywords = ['FDEF', 'FFBC' ,'THFF' ,'FFIN' ,'FFNW']
+    # keywords = ['FDEF', 'FFBC' ,'THFF' ,'FFIN' ,'FFNW']
     key = chunks(keywords, 1)
     uncompleted_keywords = keywords
 

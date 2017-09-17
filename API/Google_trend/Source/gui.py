@@ -14,9 +14,22 @@ import gc
 import tkMessageBox
 import tkFileDialog
 import calendar
-
+import GoogleTrendsCollectionToolWithGui as GTCTWG
 
 # import googletrends
+
+
+def toggle(t_btn):
+    '''
+    use
+    t_btn.config('text')[-1]
+    to get the present state of the toggle button
+    '''
+    if t_btn.config('text')[-1] == 'True':
+        t_btn.config(text='False')
+
+    else:
+        t_btn.config(text='True')
 
 
 def findoperation():
@@ -164,6 +177,7 @@ class Application(Tk):
 
 
 if __name__ == '__main__':
+    print GTCTWG.__status__
     app = Application()
     # 设置窗口标题:
     app.title('GoogleTrendsIndex-Download APP(Simple Interface)')
