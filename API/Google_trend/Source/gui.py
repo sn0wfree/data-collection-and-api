@@ -123,16 +123,27 @@ class Application(Tk):
         self.stopButton = Button(
             keyFrame, text='Stop', command=self.stopprocess)
         self.stopButton.grid(row=4, column=1, ipadx=10)
-        self.quitButton = Button(keyFrame, text='Quit', command=self.quit)
+        self.quitButton = Button(
+            keyFrame, text='Quit', command=self.quitprocess)
         self.quitButton.grid(row=4, column=2,  ipadx=10)
 
     def stopprocess(self):
         if self.programstatus.get() != 0:
             self.programstatus.set(0)
-            self.subthread._Thread__stop()
+            if self.subthread != 'Disable':
+                print self.subthread.getName()
+                print self.subthread._Thread__exc_info()
+                self.subthread._Thread__stop()
+            else:
+                pass
 
         else:
             pass
+
+    def quitprocess(self):
+        if self.subthread != 'Disable':
+            self.subthread._Thread__stop()
+        self.quit()
 
     def gettext(self):
         print GTCTWG.__status__.get()
@@ -149,7 +160,7 @@ class Application(Tk):
             print 'category:', category
             self.subthread = thread_it(GTCTWG.main, keywords, category, dates)
 
-            #GTCTWG.main(keywords, category, dates)
+            # GTCTWG.main(keywords, category, dates)
         else:
             pass
 
@@ -175,7 +186,8 @@ def thread_it(func, *args):
     # 创建
     t = threading.Thread(target=func, args=args)
     # 守护 !!!
-    t.setDaemon(False)
+    # t.setDaemon(False)
+
     # 启动
     t.start()
     # 阻塞--卡死界面！

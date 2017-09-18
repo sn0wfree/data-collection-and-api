@@ -424,19 +424,29 @@ def progress_test(counts, lenfile, speed):
     sys.stdout.flush()
 
 
-def main(target, category, dates):
+def main(target, category, dates, __status__=__status__):
     gc.enable()
     requests_cache.install_cache(
         cache_name="googletrends_request_cache", backend="sqlite", expire_date=300)
+    __status__.set(1)
 
     link = findoperation()
 
     locals_file_path = os.path.split(os.path.realpath(__file__))[0]
+    if target == 'Not found':
+        __status__.set(0)
+        raise ValueError, "Wrong Keywords"
 
-    if locals_file_path == os.path.split(os.path.realpath(target))[0]:
-        pass
+    elif target.split('/')[-1] != 'keywords.txt':
+        __status__.set(0)
+        raise ValueError, "Wrong file,need keywords.txt"
+
     else:
-        locals_file_path = os.path.split(os.path.realpath(target))[0]
+
+        if locals_file_path == os.path.split(os.path.realpath(target))[0]:
+            pass
+        else:
+            locals_file_path = os.path.split(os.path.realpath(target))[0]
 
     #target = locals_file_path + link + 'keywords.txt'
     keywords = ImportListInfobyFile(locals_file_path, target)
@@ -481,6 +491,7 @@ def main(target, category, dates):
                 request_time = request_time + 1
                 time.sleep(30)
                 if request_time > 10:
+                    __status__.set(0)
                     raise 'Quota limit'
 
             else:
