@@ -437,7 +437,7 @@ def main(target, category, dates, __status__=__status__):
         __status__.set(0)
         raise ValueError, "Wrong Keywords"
 
-    elif target.split('/')[-1] != 'keywords.txt':
+    elif os.path.split(target)[-1] != 'keywords.txt':
         __status__.set(0)
         raise ValueError, "Wrong file,need keywords.txt"
 
