@@ -10,4 +10,4 @@ python ${GET_PIP_FILE}
 
 
 curl "https://raw.githubusercontent.com/sn0wfree/data-collection-and-api/master/API/Google_trend/Source/requirements.txt" -o "${GET_REQIREMENT_FILE}"
-pip install -r GET_REQIREMENT_FILE
+pip install -r ${GET_REQIREMENT_FILE}
