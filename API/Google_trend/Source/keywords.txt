@@ -1,3 +1,8 @@
 ONB
+<<<<<<< HEAD
 ORI
 AAPL
+=======
+ORI
+AAPL
+>>>>>>> f860cf4aa89d664984b247169d8e8b5c1e5d20b8
