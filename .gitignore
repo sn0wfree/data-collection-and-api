@@ -1,17 +1,10 @@
 
-*.pyc
-
-*.pyc
-
-*.pyc
-
-*.pyc
 
 *.csv
 
 *.xlsx
 
-*.db
+
 
 *.h5
 
@@ -19,6 +12,14 @@
 
 *.db
 
-*.db
+DataCollection/kickstarter_data_collect/scrapykickstarterproject/kick/kick/__init__.pyc
 
-*.db
+DataCollection/kickstarter_data_collect/scrapykickstarterproject/kick/kick/settings.pyc
+
+Tool/xml/linkedlist.pyc
+
+Tool/xml/xml2csv.pyc
+
+Tool/xml/xml2csvtest.pyc
+
+Tool/xml/xmltable2csv.pyc
