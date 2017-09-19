@@ -1,5 +1,5 @@
 
-# Install Shadowsocks on Mac
+# Install pip on Mac
 
 GET_PIP_FILE=/tmp/get-pip.py
 
