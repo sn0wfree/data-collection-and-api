@@ -9,8 +9,9 @@ import requests_cache
 
 import pandas as pd
 import re
-import gc
+
 import csv
+
 #import numpy as np
 #from pandas import DataFrame
 import sys
@@ -527,6 +528,4 @@ def main(target, category, dates, __status__=__status__):
 
 
 if __name__ == '__main__':
-    dates, keyword, link, locals_file_path, category = 2004, 'ORI', '/', '/Users/sn0wfree/Documents/python_projects/data_collection/API/Google_trend/Source', 7
-    # main()
-    downlaod(dates, keyword, link, locals_file_path, category)
+    pass

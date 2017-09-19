@@ -13,7 +13,7 @@ from Tkinter import *
 import copy
 import threading
 import gc
-import tkMessageBox
+#import tkMessageBox
 import tkFileDialog
 import calendar
 import GoogleTrendsCollectionToolWithGui as GTCTWG
