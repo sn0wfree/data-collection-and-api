@@ -4,9 +4,13 @@ import requests
 import requests_cache
 import sqlite3
 import lxml
+import collections
 import pandas as pd
 from bs4 import BeautifulSoup
-
+try:
+    from collections import ChainMap
+except ImportError:
+    from chainmap import ChainMap
 import pandas as pd
 
 
@@ -84,22 +88,113 @@ class urllibcache(object):
             return self.fun(*args, **kwargs)
 
 
+class DataContainer():
+
+    def __init__(self):
+
+        self.data = ChainMap()
+
+    def add(self, **kwargs):
+        self.data.new_child(kwargs)
+
+        self.updateinfo()
+
+    def remove(self, removed_key):
+        del self.data[removed_key]
+
+    def updateinfo(self):
+        pass
+
+
+class Inhtml():
+
+    def __init__(self, src, header):
+        self.requesttext = requests.get(src, headers=header).text
+        self.data = {}
+
+    def path(self, pathstr, variablename, addi=True):
+        x = lxml.etree.HTML(self.requesttext).xpath(pathstr)
+        if len(x) == 1:
+            temp = (variablename, x[0].text)
+            if addi:
+                self.add(temp)
+            return temp
+
+        elif len(x) > 1:
+            temp = [(variablename + 'of' + str(x.index(value)), value.text)
+                    for value in x]
+            if addi:
+                self.add(temp)
+            return temp
+
+        else:
+            if addi:
+                self.add((variablename, 'NULL'))
+            return (variablename, 'NULL')
+
+    def add(self, d):
+        if isinstance(d, list):
+            self.data.update(dict(d))
+        if isinstance(d, tuple) or isinstance(d, set):
+            self.data.update(dict([d]))
+
+        elif isinstance(d, str):
+            raise ValueError, 'NO str'
+        elif isinstance(d, dict):
+            self.data.update(d)
+
+        else:
+            raise TypeError, 'Unknown type'
+
+    def multipath(self, dict_value, **kwargs):
+
+        new = [self.path(value, key) for key, value in dict_value.items(
+        )] + [self.path(value, key) for key, value in kwargs.items()]
+
+        self.add(dict(new))
+        return new
+
+    def detectdiff(self, target):
+        for key, value in dict(target).items():
+            pass
+
+
+def list2dict(ls):
+
+    if ':' in ls[0]:
+        key = ls[0][:-1]
+
+        value = ls[1:]
+    elif ls != []:
+        key = ls[0]
+        value = ls[1:]
+    else:
+        key = 'NULL'
+        value = 'NULL'
+    return {key: value}
+
+
+def detectchild(t):
+
+    if len(t.getchildren()) > 1:
+        # print t.xpath('./*[starts-with(name(),'ul')]')
+        return [w.strip() for g in t.getchildren() for w in g.xpath('.//text()') if w.strip() != '']
+
+    elif len(t.getchildren()) == 1:
+
+        return [v.strip() for v in t.xpath(".//text()") if v.strip() != '']
+    else:
+        return []
 if __name__ == '__main__':
     requests_cache.install_cache(
         cache_name="ChinaAidProjectInfo", backend="sqlite", expire_date=300000)
+    Data = DataContainer()
 
     max_project_id = 2521
     urlpath = 'http://china.aiddata.org/projects/'
 
     for ident in xrange(max_project_id):
         pass
-    # req = requests.get(urlpath + str(2000))
-    # rr = urllib2.Request(urlpath + str(2000))
-    # response = urllib2.urlopen(rr)
-    # htmltext = req.text
-
-    target = '<h1 class="project-header page-header">'
-    target2 = '<h1 class="'
 
     user_agent = 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'
 
@@ -112,31 +207,45 @@ if __name__ == '__main__':
     # soup = BeautifulSoup(response.read(), "lxml")
     # soup = BeautifulSoup(request.text, "lxml")
 
-    req = lxml.etree.HTML(request.text)
-    test = req.xpath("//div[@class='container main']/iframe")
-    if len(test) == 1:
-        print test[0].keys()
-        for node in test:
-            srcurl = node.attrib['src']
-        srcrequest = requests.get(srcurl)
-        srcreq = lxml.etree.HTML(srcrequest.text)
-        srctest = srcreq.xpath(
-            "//div[@class ='project-page ']//h1[@class ='project-header page-header']")
-        srctestsmall = srcreq.xpath(
-            "//div[@class ='project-page ']//h1[@class ='project-header page-header']/small[@class]")
-        print srctestsmall[0].keys()
-        for node in srctestsmall:
-            projetc_name = node.text
+    test = lxml.etree.HTML(request.text).xpath(
+        "//div[@class='container main']/iframe")
+    if len(test) != 1:
+        raise ValueError, 'iframe contain multi-information'
+    elif 'src' in test[0].keys():
+        srcframe = Inhtml(test[0].attrib['src'], headers)
 
-            #
-            # Donor
-            # print Donor
+        dict2 = {
+            'project_name': "//div[@class ='container main']//div[@class ='project-page ']//h1[@class ='project-header page-header']",
+            'project_brief': "//div[@class ='container main']//div[@class ='project-page ']//h1[@class ='project-header page-header']/small[@class]"}
 
-            # for tag in soup.find_all(True):
-            #    print(tag.name)
+        print list2dict(srcframe.multipath(dict2))
 
+        pathstr = "//div[@class ='container main']//div[@class ='project-page ']//li[@flaggable_type='Donor']/../*"
 
+        test = lxml.etree.HTML(srcframe.requesttext).xpath(pathstr)
+
+        # print [t.getchildren()[0].text for t in test]
+        rr = ChainMap()
+
+        chain = ChainMap(*[list2dict(detectchild(t)) for t in test])
+        print chain
+
+        pathstr2 = "//div[@class ='container main']//div[@class ='project-page ']//li[@flaggable_type='Intent']/../*"
+        test2 = lxml.etree.HTML(srcframe.requesttext).xpath(pathstr2)
+        print [list2dict(detectchild(t2)) for t2 in test2]
+
+        total = lxml.etree.HTML(srcframe.requesttext).xpath(
+            "//div[@class='container main']//div[@class='project-page ']//li//text()")
+        totalinfo = [ws.strip()
+                     for ws in total if ws.strip() != '']
+        # print 'flaggable_type'
+
+    else:
+        pass
 '''
+
+
+
     Donor:
         China
     Recipient Countries:
