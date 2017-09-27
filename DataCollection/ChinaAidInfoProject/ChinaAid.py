@@ -110,81 +110,93 @@ class Inhtml():
 
     def __init__(self, src, header):
         self.requesttext = requests.get(src, headers=header).text
-        self.data = {}
+        self.data = ChainMap()
 
-    def path(self, pathstr, variablename, addi=True):
+    def xpathparser(self, pathstr, variablename, addi=True):
         x = lxml.etree.HTML(self.requesttext).xpath(pathstr)
         if len(x) == 1:
-            temp = (variablename, x[0].text)
+            temp = (variablename, x[0].text.strip())
             if addi:
-                self.add(temp)
+
+                self.add({temp[0]: temp[1]})
             return temp
 
         elif len(x) > 1:
-            temp = [(variablename + 'of' + str(x.index(value)), value.text)
-                    for value in x]
+            temp = {variablename + 'of' + str(x.index(value)): value.text.strip()
+                    for value in x}
             if addi:
                 self.add(temp)
             return temp
 
         else:
+            print len(x)
             if addi:
-                self.add((variablename, 'NULL'))
+                self.add({variablename: 'NULL'})
             return (variablename, 'NULL')
 
     def add(self, d):
-        if isinstance(d, list):
-            self.data.update(dict(d))
-        if isinstance(d, tuple) or isinstance(d, set):
-            self.data.update(dict([d]))
+        if isinstance(d, type(ChainMap())):
+            self.data = self.data.new_child(d)
 
-        elif isinstance(d, str):
-            raise ValueError, 'NO str'
         elif isinstance(d, dict):
-            self.data.update(d)
-
+            self.data = self.data.new_child(d)
+        elif isinstance(d, list):
+            if isinstance(d[0], dict):
+                self.data = self.data.new_child(d)
+            else:
+                raise TypeError, 'Unknown type'
         else:
-            raise TypeError, 'Unknown type'
+            raise ValueError, 'Unknown value'
 
-    def multipath(self, dict_value, **kwargs):
+    def multixpathparser(self, *args, **kwargs):
 
-        new = [self.path(value, key) for key, value in dict_value.items(
-        )] + [self.path(value, key) for key, value in kwargs.items()]
+        t1 = [self.xpathparser(di[key], key, addi=False)
+              for di in args for key in di.keys()]
+        t2 = [self.xpathparser(value, key, addi=False)
+              for key, value in kwargs.items()]
+        self.add(dict(t1))
+        self.add(dict(t2))
 
-        self.add(dict(new))
-        return new
+    def detectchild(self, t):
 
-    def detectdiff(self, target):
-        for key, value in dict(target).items():
-            pass
+        if len(t.getchildren()) > 1:
+            # print t.xpath('./*[starts-with(name(),'ul')]')
+            return [w.strip() for g in t.getchildren() for w in g.xpath('.//text()') if w.strip() != '']
+
+        elif len(t.getchildren()) == 1:
+
+            return [v.strip() for v in t.xpath(".//text()") if v.strip() != '']
+        else:
+            return []
+
+    def list2dict(self, ls):
+
+        if ':' in ls[0]:
+            key = ls[0][:-1]
+
+            value = ls[1:]
+        elif ls != []:
+            key = ls[0]
+            value = ls[1:]
+        else:
+            key = 'NULL'
+            value = 'NULL'
+        return (key, value)
+
+    def parser(self, xpth):
+        #xpth = "//div[@class ='container main']//div[@class ='project-page ']//li[@flaggable_type='Intent']/../*"
+        test2 = lxml.etree.HTML(self.requesttext).xpath(xpth)
+
+        chain2 = dict([self.list2dict(self.detectchild(t)) for t in test2])
+        self.add(chain2)
+
+    def parserwithoutadd(self, xpth):
+        test2 = lxml.etree.HTML(self.requesttext).xpath(xpth)
+
+        chain2 = dict([self.list2dict(self.detectchild(t)) for t in test2])
+        return chain2
 
 
-def list2dict(ls):
-
-    if ':' in ls[0]:
-        key = ls[0][:-1]
-
-        value = ls[1:]
-    elif ls != []:
-        key = ls[0]
-        value = ls[1:]
-    else:
-        key = 'NULL'
-        value = 'NULL'
-    return {key: value}
-
-
-def detectchild(t):
-
-    if len(t.getchildren()) > 1:
-        # print t.xpath('./*[starts-with(name(),'ul')]')
-        return [w.strip() for g in t.getchildren() for w in g.xpath('.//text()') if w.strip() != '']
-
-    elif len(t.getchildren()) == 1:
-
-        return [v.strip() for v in t.xpath(".//text()") if v.strip() != '']
-    else:
-        return []
 if __name__ == '__main__':
     requests_cache.install_cache(
         cache_name="ChinaAidProjectInfo", backend="sqlite", expire_date=300000)
@@ -201,7 +213,7 @@ if __name__ == '__main__':
     headers = {'User-Agent': user_agent}
     # request = urllib2.Request(urlpath + str(1653), headers=headers)
     # response = urllib2.urlopen(request)
-    request = requests.get(urlpath + str(1653), headers=headers)
+    request = requests.get(urlpath + str(1654), headers=headers)
 
     # response = urllib2.urlopen(request.text)
     # soup = BeautifulSoup(response.read(), "lxml")
@@ -213,32 +225,46 @@ if __name__ == '__main__':
         raise ValueError, 'iframe contain multi-information'
     elif 'src' in test[0].keys():
         srcframe = Inhtml(test[0].attrib['src'], headers)
+        print 'project_name'
 
         dict2 = {
             'project_name': "//div[@class ='container main']//div[@class ='project-page ']//h1[@class ='project-header page-header']",
             'project_brief': "//div[@class ='container main']//div[@class ='project-page ']//h1[@class ='project-header page-header']/small[@class]"}
+        srcframe.multixpathparser(dict2)
 
-        print list2dict(srcframe.multipath(dict2))
+        print '--------'
+        print 'project_detail'
 
-        pathstr = "//div[@class ='container main']//div[@class ='project-page ']//li[@flaggable_type='Donor']/../*"
+        pathstr = ["//div[@class ='container main']//div[@class ='project-page ']//li[@flaggable_type='Donor']/../*",
+                   "//div[@class ='container main']//div[@class ='project-page ']//li[@flaggable_type='Intent']/../*",
+                   "//div[@class ='container main']//div[@class ='project-page ']//li[@flaggable_type='StartPlanned']/../*",
+                   "//div[@class ='container main']//div[@class ='project-page ']//li[@flaggable_type='LoanType']/../*",
+                   "//div[@class ='container main']//div[@class ='project-page ']//li[@flaggable_type='Transaction']/../*",
 
-        test = lxml.etree.HTML(srcframe.requesttext).xpath(pathstr)
+                   "//div[@class ='container main']//div[@class ='project-page ']//li[@flaggable_type='Capacity']",
+                   "//div[@class ='container main']//div[@class ='project-page ']//li[@flaggable_type='Geocode']",
 
-        # print [t.getchildren()[0].text for t in test]
-        rr = ChainMap()
 
-        chain = ChainMap(*[list2dict(detectchild(t)) for t in test])
-        print chain
+                   ]
+        te1 = "//div[@class ='container main']//div[@class ='project-page ']//ul[@id='resources']/*"
+        te2 = "//div[@class ='container main']//div[@class ='project-page ']//li[@flaggable_type='Description']"
+        te3 = "//div[@class ='container main']//div[@class ='project-page ']//li[@flaggable_type='ParticipatingOrganization']/../*"
+        te3 = "//div[@class ='container main']//div[@class ='project-page ']//li[@flaggable_type='Contact']/../*"
 
-        pathstr2 = "//div[@class ='container main']//div[@class ='project-page ']//li[@flaggable_type='Intent']/../*"
-        test2 = lxml.etree.HTML(srcframe.requesttext).xpath(pathstr2)
-        print [list2dict(detectchild(t2)) for t2 in test2]
+        [srcframe.parser(xp) for xp in pathstr]
+        print srcframe.parserwithoutadd(te2)
 
-        total = lxml.etree.HTML(srcframe.requesttext).xpath(
+        backup = lxml.etree.HTML(srcframe.requesttext).xpath(
             "//div[@class='container main']//div[@class='project-page ']//li//text()")
-        totalinfo = [ws.strip()
-                     for ws in total if ws.strip() != '']
-        # print 'flaggable_type'
+        srcframe.add({'backup': [ws.strip()
+                                 for ws in backup if ws.strip() != '']})
+
+        for s in srcframe.data.keys():
+            if s != 'backup':
+                print s, ":", srcframe.data[s]
+                pass
+
+                # print 'flaggable_type'
 
     else:
         pass
