@@ -108,31 +108,11 @@ class DataContainer():
 
 class Inhtml():
 
-    def __init__(self, src, header):
+    def __init__(self, src, header, publicaddress):
         self.requesttext = requests.get(src, headers=header).text
         self.data = ChainMap()
-
-    def xpathparser(self, pathstr, variablename, addi=True):
-        x = lxml.etree.HTML(self.requesttext).xpath(pathstr)
-        if len(x) == 1:
-            temp = (variablename, x[0].text.strip())
-            if addi:
-
-                self.add({temp[0]: temp[1]})
-            return temp
-
-        elif len(x) > 1:
-            temp = {variablename + 'of' + str(x.index(value)): value.text.strip()
-                    for value in x}
-            if addi:
-                self.add(temp)
-            return temp
-
-        else:
-            print len(x)
-            if addi:
-                self.add({variablename: 'NULL'})
-            return (variablename, 'NULL')
+        self.publicaddress = publicaddress
+        self.link = ChainMap()
 
     def add(self, d):
         if isinstance(d, type(ChainMap())):
@@ -148,6 +128,49 @@ class Inhtml():
         else:
             raise ValueError, 'Unknown value'
 
+    def xpathparser_test(self, pathstr, variablename, addi=True):
+        x = lxml.etree.HTML(self.requesttext).xpath(pathstr)
+        if len(x) == 1:
+            if addi:
+                self.add({variablename: x[0].text.strip()})
+
+                print x[0].text.strip()
+
+            return (variablename, x[0].text.strip())
+        elif len(x) > 1 and addi:
+            temp = {variablename + 'of' + str(x.index(value)): value.text.strip()
+                    for value in x}
+            print temp.values()
+            if addi:
+                self.add(temp)
+            return temp
+
+        else:
+            print len(x)
+            if addi:
+                self.add({variablename: 'NULL'})
+            return (variablename, 'NULL')
+
+    def xpathparser(self, pathstr, variablename, addi=True):
+        x = lxml.etree.HTML(self.requesttext).xpath(pathstr)
+        if len(x) == 1:
+            if addi:
+                self.add({variablename: x[0].text.strip()})
+
+            return (variablename, x[0].text.strip())
+        elif len(x) > 1 and addi:
+            temp = {variablename + 'of' + str(x.index(value)): value.text.strip()
+                    for value in x}
+            if addi:
+                self.add(temp)
+            return temp
+
+        else:
+            print len(x)
+            if addi:
+                self.add({variablename: 'NULL'})
+            return (variablename, 'NULL')
+
     def multixpathparser(self, *args, **kwargs):
 
         t1 = [self.xpathparser(di[key], key, addi=False)
@@ -161,9 +184,31 @@ class Inhtml():
 
         if len(t.getchildren()) > 1:
             # print t.xpath('./*[starts-with(name(),'ul')]')
+            #     print pr
+
+            href = [dict(g.text, t.attrib['href'])
+                    for g in t.getchildren() if g.tag == 'a' if 'href' in t.attrib.keys()]
+            for g in t.getchildren():
+                print g
+                if g.tag == 'a' and 'href' in g.attrib.keys():
+                    print g.attrib['href']
+                    print g.text
+                    print t.attrib['flaggable_type']
+
+            if href != []:
+                print href, "9"
+                self.link = self.link.new_child(href)
+            else:
+                print href, '8'
+
             return [w.strip() for g in t.getchildren() for w in g.xpath('.//text()') if w.strip() != '']
 
         elif len(t.getchildren()) == 1:
+            href = [dict(t.text, t.attrib['href'])
+                    for g in t.getchildren() if 'href' in t.attrib.keys()]
+            if href != []:
+                print href, "9"
+                self.link = self.link.new_child(href)
 
             return [v.strip() for v in t.xpath(".//text()") if v.strip() != '']
         else:
@@ -172,7 +217,7 @@ class Inhtml():
     def list2dict(self, ls):
 
         if ':' in ls[0]:
-            key = ls[0][:-1]
+            key = ls[0][: -1]
 
             value = ls[1:]
         elif ls != []:
@@ -183,18 +228,16 @@ class Inhtml():
             value = 'NULL'
         return (key, value)
 
-    def parser(self, xpth):
-        #xpth = "//div[@class ='container main']//div[@class ='project-page ']//li[@flaggable_type='Intent']/../*"
+    def parser(self, xpth, addi=True):
+        # xpth = "//div[@class ='container main']//div[@class ='project-page
+        # ']//li[@flaggable_type='Intent']/../*"
         test2 = lxml.etree.HTML(self.requesttext).xpath(xpth)
 
         chain2 = dict([self.list2dict(self.detectchild(t)) for t in test2])
-        self.add(chain2)
-
-    def parserwithoutadd(self, xpth):
-        test2 = lxml.etree.HTML(self.requesttext).xpath(xpth)
-
-        chain2 = dict([self.list2dict(self.detectchild(t)) for t in test2])
-        return chain2
+        if addi:
+            self.add(chain2)
+        else:
+            return chain2
 
 
 if __name__ == '__main__':
@@ -207,24 +250,21 @@ if __name__ == '__main__':
 
     for ident in xrange(max_project_id):
         pass
+    #-----------
 
     user_agent = 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'
 
     headers = {'User-Agent': user_agent}
-    # request = urllib2.Request(urlpath + str(1653), headers=headers)
-    # response = urllib2.urlopen(request)
-    request = requests.get(urlpath + str(1654), headers=headers)
 
-    # response = urllib2.urlopen(request.text)
-    # soup = BeautifulSoup(response.read(), "lxml")
-    # soup = BeautifulSoup(request.text, "lxml")
+    request = requests.get(urlpath + str(1654), headers=headers)
 
     test = lxml.etree.HTML(request.text).xpath(
         "//div[@class='container main']/iframe")
     if len(test) != 1:
         raise ValueError, 'iframe contain multi-information'
     elif 'src' in test[0].keys():
-        srcframe = Inhtml(test[0].attrib['src'], headers)
+        srcframe = Inhtml(test[0].attrib['src'], headers,
+                          publicaddress='http://china.aiddata.org/')
         print 'project_name'
 
         dict2 = {
@@ -232,6 +272,7 @@ if __name__ == '__main__':
             'project_brief': "//div[@class ='container main']//div[@class ='project-page ']//h1[@class ='project-header page-header']/small[@class]"}
         srcframe.multixpathparser(dict2)
 
+        print srcframe.data
         print '--------'
         print 'project_detail'
 
@@ -242,17 +283,35 @@ if __name__ == '__main__':
                    "//div[@class ='container main']//div[@class ='project-page ']//li[@flaggable_type='Transaction']/../*",
 
                    "//div[@class ='container main']//div[@class ='project-page ']//li[@flaggable_type='Capacity']",
-                   "//div[@class ='container main']//div[@class ='project-page ']//li[@flaggable_type='Geocode']",
+
 
 
                    ]
+        "//div[@class ='container main']//div[@class ='project-page ']//a[@href]"
+        pr = lxml.etree.HTML(srcframe.requesttext).xpath(
+            "//div[@class ='container main']//div[@class ='project-page ']//li[@flaggable_type='Intent']/../*")
+        print pr
+
+        for p in pr:
+
+            for ss in p.getchildren():
+                if ss.tag == 'a':
+
+                    if 'href' in ss.attrib.keys():
+                        print ss.text, ss.attrib['href']
+
+                # print ss.xpath('.//text()')
+            print '---------'
+            "//div[@class ='container main']//div[@class ='project-page ']//div[@id='resources']"
+            "//div[@class ='container main']//div[@class ='project-page ']//div[@id='geocodes']"
+
         te1 = "//div[@class ='container main']//div[@class ='project-page ']//ul[@id='resources']/*"
         te2 = "//div[@class ='container main']//div[@class ='project-page ']//li[@flaggable_type='Description']"
         te3 = "//div[@class ='container main']//div[@class ='project-page ']//li[@flaggable_type='ParticipatingOrganization']/../*"
-        te3 = "//div[@class ='container main']//div[@class ='project-page ']//li[@flaggable_type='Contact']/../*"
+        te4 = "//div[@class ='container main']//div[@class ='project-page ']//li[@flaggable_type='Contact']/../*"
+        te5 = "//div[@class ='container main']//div[@class ='project-page ']//li[@flaggable_type='Geocode']"
 
         [srcframe.parser(xp) for xp in pathstr]
-        print srcframe.parserwithoutadd(te2)
 
         backup = lxml.etree.HTML(srcframe.requesttext).xpath(
             "//div[@class='container main']//div[@class='project-page ']//li//text()")
@@ -265,6 +324,7 @@ if __name__ == '__main__':
                 pass
 
                 # print 'flaggable_type'
+        print 'link:', srcframe.link
 
     else:
         pass

@@ -20,7 +20,7 @@ GET_PIP_FILE=/tmp/get-pip.py
 curl "https://bootstrap.pypa.io/get-pip.py" -o "${GET_PIP_FILE}"
 python ${GET_PIP_FILE}
 
-# install shadowsocks
+# install shadowsogcks
 pip install --upgrade pip
 pip install shadowsocks
 
