@@ -4,6 +4,8 @@ import requests
 import requests_cache
 import sqlite3
 import lxml
+import time
+import random
 import collections
 import pandas as pd
 from bs4 import BeautifulSoup
@@ -121,10 +123,8 @@ class Inhtml():
         hrefinsitelinkbackup = []
 
         for a in href:
-            try:
-                l = (a.text, a.attrib['href'])
-            except UnicodeEncodeError, e:
-                l = (a.text.encode('utf-8'), a.attrib['href'])
+
+            l = (DetectAscii(a.text, printout=False), a.attrib['href'])
 
             if l[0] != None and 'http' not in l[0] and 'More about this resource' not in l[0]:
                 # print l[0].encode('utf-8')
@@ -196,11 +196,10 @@ class Inhtml():
                 href = {}
                 for g in t.getchildren():
                     if g.tag == 'a' and 'href' in g.attrib.keys():
-                        try:
-                            href[text[0]] = (g.text, g.attrib['href'])
-                        except UnicodeEncodeError:
-                            href[text[0]] = (g.text.encode(
-                                'utf-8'), g.attrib['href'])
+
+                        href[text[0]] = (DetectAscii(
+                            g.text, printout=False), g.attrib['href'])
+
                 if href != {}:
                     self.link = self.link.new_child(href)
             else:
@@ -216,11 +215,10 @@ class Inhtml():
                 href = {}
                 for g in t.getchildren():
                     if g.tag == 'a' and 'href' in g.attrib.keys():
-                        try:
-                            href[text[0]] = (g.text, g.attrib['href'])
-                        except UnicodeEncodeError:
-                            href[text[0]] = (g.text.encode(
-                                'utf-8'), g.attrib['href'])
+
+                        href[text[0]] = (DetectAscii(
+                            g.text, printout=False), g.attrib['href'])
+
                 if href != {}:
                     self.link = self.link.new_child(href)
             else:
@@ -264,6 +262,87 @@ class Inhtml():
             return chain2
 
 
+class UrlGenerator():
+
+    def __init__(self, initialpage):
+        if initialpage == '' or initialpage == 'default':
+            self.initialpage = 'http://china.aiddata.org/projects?utf8=%E2%9C%93&search='
+        else:
+            self.initialpage = initialpage
+        self.projectinfo = []
+        #self.urllist = []
+        self.columnnames = []
+        self.columnslink = []
+        self.__status__ = 'Idle - Idle'
+        # self.RequestUrl(self.initialpage)
+
+    def RequestUrl(self, url):
+        t = lxml.etree.HTML(requests.get(url).text)
+
+        for table in t.xpath("//table[@class='table table-hover']"):
+
+            for t in table.getchildren():
+                if self.columnnames == [] and t.tag == 'thead':
+
+                    self.columnnames = [th.xpath('a/text()')[0]
+                                        for th in t.xpath('//th')]
+
+                    self.columnslink = [th.xpath('a[@href]')[0].attrib[
+                        'href'] for th in t.xpath('//th')]
+
+                elif t.tag == 'tbody':
+                    project = [[self.ProjectTitleParse(
+                        td) for td in tr.getchildren() if self.ProjectTitleParse(td) != None] for tr in t.xpath("//tr")]
+                    if project[0][0][0] == 'ID':
+                        project = project[1:]
+                    test = pd.DataFrame(project, columns=self.columnnames)
+                    test['Url'] = [title[1] for title in list(test.Title)]
+                    test['Title'] = [title[0] for title in list(test.Title)]
+                    self.projectinfo.append(test)
+        returnvalue = self.DoNext(t, urlversion='parsed')
+        if returnvalue == 0:
+            self.projectinfo = pd.concat(self.projectinfo)
+            self.projectinfo.to_hdf('ChinaAid.h5')
+            pass
+        else:
+            time.sleep(1)
+            self.RequestUrl(returnvalue)
+
+    def ProjectTitleParse(self, td):
+        if len(td) < 1:
+
+            return DetectAscii(td.text, printout=False)
+
+        elif len(td) == 1 and td[0].tag == 'a':
+            if 'href' in td[0].attrib.keys():
+
+                url_temp = 'http://china.aiddata.org' + \
+                    td[0].attrib['href']
+
+            else:
+                url_temp = ''
+            if td[0].text is not None:
+                return (DetectAscii(td[0].text, printout=False), url_temp)
+
+            elif td[0].getchildren()[0].tag == 'span':
+                return (DetectAscii(td[0].getchildren()[0].text, printout=False), url_temp)
+
+    def DoNext(self, url, urlversion='parsed'):
+        if urlversion == 'parsed':
+            t = url.xpath(
+                "//div[@class='pagination']//li[@class='next next_page ']/a[@rel='next' and @href]")
+        else:
+            t = lxml.etree.HTML(requests.get(url).text).xpath(
+                "//div[@class='pagination']//li[@class='next next_page ']/a[@rel='next' and @href]")
+        if t != []:
+
+            yield 'http://china.aiddata.org' + [ts.attrib['href'] for ts in t][0]
+
+        else:
+            self.__status__ = 'Working - Meet Last Page; Will Stop'
+            return 0
+
+
 def main(testurlpath, headers='default'):
     if headers == 'default':
         headers = {
@@ -283,6 +362,23 @@ def main(testurlpath, headers='default'):
 
     return srcframe.data, srcframe.link
 
+
+def DetectAscii(text, printout=True):
+
+    try:
+        if printout:
+
+            print text.encode('utf-8')
+
+        else:
+            return text.encode('utf-8')
+
+    except AttributeError:
+        if printout:
+            print text
+        else:
+            return text
+
 if __name__ == '__main__':
     requests_cache.install_cache(
         cache_name="ChinaAidProjectInfo", backend="sqlite", expire_date=300000)
@@ -293,87 +389,13 @@ if __name__ == '__main__':
     testurlpath = urlpath + str(projectid)
     #--------
 
-    dataset = main(testurlpath)
-    print dataset[0]
+    # dataset = main(testurlpath)
+    # print dataset[0]
 
     #-----------
+    #-----------
+    # do next
+    initialpage = 'http://china.aiddata.org/projects?utf8=%E2%9C%93&search='
+    UrlGenerator(initialpage)
 
-
-'''
-
-
-
-    Donor:
-        China
-    Recipient Countries:
-    Liberia(Suacoco, Bong County)
-    Commitment Year:
-        2008
-    Total Amount(USD - 2014):
-        $8, 273, 478.56
-    CRS Sector:
-        Agriculture, Forestry and Fishing
-    Flow Type:
-        Free - standing technical assistance
-    Flow Class:
-        ODA - like(Arbitrated)
-    Scope:
-        Official finance
-    Verified:
-        Checked
-    Intent:
-        Development
-    Status:
-        Completion
-    Sector Comment:
-
-    Debt Uncertain:
-
-    Commercial:
-        —
-    Line of Credit:
-        —
-    Is Cofinanced:
-        —
-    Ground Truthed:
-        —
-    Dates:
-
-    Start(Planned):
-        —
-    Start(Actual):
-        28 April 2009
-    End(Planned):
-        01 February 2010
-    End(Actual):
-        01 January 2011
-    Loan Details:
-
-    Loan Type:
-        —
-    Interest Rate:
-        —
-    Maturity:
-        —
-    Grace Period:
-        —
-    Grant Element:
-        —
-    Transactions:
-
-    $8, 273, 478.56 USD - 2014 ($6, 000, 000.00 USD in 2008)
-    1241683516718
-    1241683500133
-    1
-    2
-    Previous
-    Next
-    Upload File
-    Share Video
-    Downloads
-    Description:
-
-    On May 28, 2007 a Chinese delegation arrived in Harper, Maryland County to conduct feasibility studies for the establishment of an agricultural demonstration center. On March 28, 2008, Chinese Ambassador Zhou Yuxiao and Liberian Foreign Minister Boolean signed a cooperation agreement for Chinese assistance on constructing an Agricultural Technology Demonstration Center. In April 2009 construction began of the China Agricultural Technology Demonstration center at the Central Agricultural Research Institute(CARI) in Suacoco, Bong County. The Center is expected to be complete in 10 months and will cost US$6 million. It will be constructed on a 2360 square meter area. According to the Chinese Embassy, the Center will cover an area of 2, 411 square meters. Groundbreaking ceremony for the center was held on April 28, 2009. An official handover ceremony was held on July 23, 2010. Yuan Longping High - tech Agriculture Co., Ltd was the main implementing organization and the agricultural demonstration center specialized in hybrid rice.
-    Capacity:
-        2, 411 square meters, with a laboratory, technical training and sustainable agricultural development focuses
-'''
+    # print ts.text
