@@ -270,11 +270,11 @@ class UrlGenerator():
         else:
             self.initialpage = initialpage
         self.projectinfo = []
-        #self.urllist = []
+        self.count = 0
         self.columnnames = []
         self.columnslink = []
         self.__status__ = 'Idle - Idle'
-        # self.RequestUrl(self.initialpage)
+        self.RequestUrl(self.initialpage)
 
     def RequestUrl(self, url):
         t = lxml.etree.HTML(requests.get(url).text)
@@ -302,10 +302,14 @@ class UrlGenerator():
         returnvalue = self.DoNext(t, urlversion='parsed')
         if returnvalue == 0:
             self.projectinfo = pd.concat(self.projectinfo)
-            self.projectinfo.to_hdf('ChinaAid.h5')
+            #self.projectinfo.to_hdf('ChinaAid.h5', 'ChinaAid')
+            self.projectinfo.to_csv('ChinaAid_own.csv')
             pass
         else:
             time.sleep(1)
+            self.count = self.count + 1
+            print "                  ", self.count
+
             self.RequestUrl(returnvalue)
 
     def ProjectTitleParse(self, td):
@@ -336,7 +340,7 @@ class UrlGenerator():
                 "//div[@class='pagination']//li[@class='next next_page ']/a[@rel='next' and @href]")
         if t != []:
 
-            yield 'http://china.aiddata.org' + [ts.attrib['href'] for ts in t][0]
+            return 'http://china.aiddata.org' + [ts.attrib['href'] for ts in t][0]
 
         else:
             self.__status__ = 'Working - Meet Last Page; Will Stop'
