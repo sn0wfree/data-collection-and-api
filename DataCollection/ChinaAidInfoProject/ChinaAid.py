@@ -3,6 +3,9 @@ import urllib2
 import requests
 import requests_cache
 import sqlite3
+import unqlite
+import sys
+import multiprocessing as mp
 import lxml
 import time
 import random
@@ -15,13 +18,89 @@ except ImportError:
     from chainmap import ChainMap
 
 
-def InitalSqliteConnection(target):
-    if target != 0:
-        conn = sqlite3.connect(target)
-    else:
-        conn = sqlite3.connect(":memory:")
+class SqliteDatabase():
 
-    return conn
+    def __init__(self, targetpath):
+        self.conn = self.InitalSqliteConnection(targetpath)
+        self.table = self.UpdateTable()
+
+    def InitalSqliteConnection(self, target):
+        if target != 0:
+            conn = sqlite3.connect(target)
+        else:
+            conn = sqlite3.connect(":memory:")
+
+        return conn
+
+    def CreaTetable(self, tablename, **varnameandtype):
+        '''
+        input Table Name as one variable and Variable Name & Variable Type as a series of dict-like parameter
+        '''
+        cursor = self.conn.cursor()
+        command = ''
+        for key, value in varnameandtype.items():
+            command = command + key + ' ' + value + ','
+        try:
+            if command != '':
+
+                cursor.execute("CREATE TABLE IF NOT EXISTS  %s (%s)" %
+                               (tablename, command))
+                self.conn.commit()
+                return True
+            else:
+
+                pass
+        except:
+            print "Create table failed, table %s already exist" % tablename
+            return False
+        if command == '':
+            raise ValueError, 'Empty Variable Name and Type, please define the Variables'
+
+    def UpdateTable(self):
+        cursor = self.conn.cursor()
+        command = '''SELECT name FROM sqlite_master
+        WHERE type='table'
+        ORDER BY name;
+        '''
+
+        return cursor.execute(command)
+
+    def insert(self, tablename, *var):
+        cursor = self.conn.cursor()
+        p = '?' + ',?' * (len(var) - 1)
+
+        c.execute("INSERT INTO %s VALUES (%s)" % (tablename, p), var)
+        self.conn.commit()
+        self.table = self.UpdateTable()
+
+    def Delete(self, tablename, **delvars):
+        c = self.conn.cursor()
+        for delvar, value in delvars.items():
+            c.execute("DELETE FROM %s WHERE %s = ?" %
+                      (tablename, delvar), (value,))
+        self.conn.commit()
+        self.table = self.UpdateTable()
+
+    def display(self, tablename):
+        c = self.conn.cursor()
+        c.execute("SELECT * FROM %s" % tablename)
+        print c.fetchall()
+
+    def Update(self, tablename, wherevars, setvars):
+        c = self.conn.cursor()
+
+        wher = [(wherevar, wherevalue)
+                for wherevar, wherevalue in wherevars.items()]
+        command1 = '? = ?' + ',? = ?' * (len(wher) - 1)
+
+        serv = [(setvar, setvalue)
+                for setvar, setvalue in setvars.items()]
+        command2 = '? = ?' + ',? = ?' * (len(serv) - 1)
+
+        c.execute("UPDATE %s SET %s WHERE %s" %
+                  (tablename, command1, command2), wher + serv)
+        self.conn.commit()
+        self.table = self.UpdateTable()
 
 
 class urllibcache(object):
@@ -63,6 +142,7 @@ class Inhtml():
 
     def __init__(self, src, header, publicaddress, AutoCollect=False):
         self.requesttext = requests.get(src, headers=header).text
+        self.src = src
         self.data = ChainMap()
         self.link = ChainMap()
         self.publicaddress = publicaddress
@@ -129,22 +209,22 @@ class Inhtml():
             if l[0] != None and 'http' not in l[0] and 'More about this resource' not in l[0]:
                 # print l[0].encode('utf-8')
                 if l[1][0] == '/':
-                    hrefstatusdict.append((l[0], urlpath[:-2] + l[1]))
+                    hrefstatusdict.append((l[0],  self.src + l[1]))
                 else:
-                    hrefstatusdict.append((l[0], urlpath + l[1]))
+                    hrefstatusdict.append((l[0], self.src + '/' + l[1]))
 
             elif l[0] == None:
 
                 if l[1][0] == '/':
-                    hrefinsitelink.append(urlpath[:-2] + l[1])
+                    hrefinsitelink.append(self.src + l[1])
                 else:
-                    hrefinsitelink.append(urlpath + l[1])
+                    hrefinsitelink.append(self.src + '/' + l[1])
 
             elif 'More about this resource' in l[0]:
                 if l[1][0] == '/':
-                    hrefinsitelink.append(urlpath[:-2] + l[1])
+                    hrefinsitelink.append(self.src + l[1])
                 else:
-                    hrefinsitelink.append(urlpath + l[1])
+                    hrefinsitelink.append(self.src + '/' + l[1])
 
             elif 'http' in l[0]:
                 hrefinsitelinkbackup.append(l[0])
@@ -251,7 +331,7 @@ class Inhtml():
             if len(test2) == 1:
                 chain2 = {var: self.detectchild(test2[0])}
             else:
-                print var
+                # print var
                 chain2 = {
                     var: dict([self.list2dict(self.detectchild(t)) for t in test2])}
 
@@ -302,7 +382,7 @@ class UrlGenerator():
         returnvalue = self.DoNext(t, urlversion='parsed')
         if returnvalue == 0:
             self.projectinfo = pd.concat(self.projectinfo)
-            #self.projectinfo.to_hdf('ChinaAid.h5', 'ChinaAid')
+            # self.projectinfo.to_hdf('ChinaAid.h5', 'ChinaAid')
             self.projectinfo.to_csv('ChinaAid_own.csv')
             pass
         else:
@@ -358,13 +438,13 @@ def main(testurlpath, headers='default'):
 
     test = lxml.etree.HTML(request.text).xpath(
         "//div[@class='container main']/iframe")
-    if len(test) != 1:
-        raise ValueError, 'iframe contain multi-information'
-    elif 'src' in test[0].keys():
+
+    if 'src' in test[0].keys():
         srcframe = Inhtml(test[0].attrib['src'], headers,
                           publicaddress='http://china.aiddata.org/', AutoCollect=True)
-
-    return srcframe.data, srcframe.link
+        return srcframe.data, srcframe.link
+    elif len(test) != 1:
+        raise ValueError, 'iframe contain multi-information'
 
 
 def DetectAscii(text, printout=True):
@@ -383,23 +463,165 @@ def DetectAscii(text, printout=True):
         else:
             return text
 
+
+class nolsql(unqlite.UnQLite):
+
+    def __init__(self,  path):
+        if path == 'default' or path == ':mem:':
+            unqlite.UnQLite.__init__(self)
+        else:
+            unqlite.UnQLite.__init__(self, filename=path)
+        self.conflict = []
+        self.duplicate = {}
+
+    def detectduplicate(self, key, value):
+        if key not in self.keys():
+            self.append(key, value)
+        else:
+            if self[key] == [value]:
+                try:
+                    self.duplicate[key] = self.duplicate[key] + 1
+                except KeyError:
+                    self.duplicate[key] = 1
+            else:
+                self.conflict.append(key)
+                self[key].append(value)
+
+    def add(self, var):
+        if isinstance(var, dict):
+
+            for key, value in var.items():
+                self.detectduplicate(key, value)
+        else:
+            raise TypeError, 'Unsupported Type'
+
+
+def progress_test(counts, lenfile, speed):
+    bar_length = 20
+
+    process = counts / float(lenfile)
+
+    ETA = speed * (lenfile - counts) / float(60)
+    hashes = '#' * int(process * bar_length)
+    spaces = ' ' * (bar_length - len(hashes))
+    sys.stdout.write("""\r%d%%|%s|completed %d * projects|Speed : %.4f s/ projects|ETA: %s min""" %
+                     (process * 100, hashes + spaces, counts, speed, ETA))
+
+    sys.stdout.flush()
+
+
+def dosomething(iurl):
+    #globals()['count'], retry
+    ids, url = iurl
+    f = time.time()
+    try:
+        data, link = main(url)
+        # print data
+        dic = {"data": data.maps, "link": link.maps, "ID": ids}
+
+        globals()['count'] = globals()['count'] + 1
+        if globals()['retry'] > 5:
+            globals()['retry'] = globals()['retry'] - 1
+        return dic
+    except IndexError, e:
+        print e
+        globals()['retry'] = globals()['retry'] + 1
+
+        if globals()['retry'] > 50:
+            raise IndexError, 'Max retries, Will Stop'
+
+    else:
+        time.sleep(5)
+    time.sleep(1)
+    progress_test(globals()['count'], globals()['lenfile'], time.time() - f)
+
+
+def chunks(target, n):
+    if isinstance(target, list):
+        date1 = [target[i:i + n] for i in xrange(0, len(target), n)]
+    else:
+        date1 = []
+        raise ValueError, "Wrong type,I need a list."
+    return date1
 if __name__ == '__main__':
     requests_cache.install_cache(
-        cache_name="ChinaAidProjectInfo", backend="sqlite", expire_date=300000)
+        cache_name="ChinaAidProjectInfo", backend="sqlite", expire_date=300)
     Data = DataContainer()
+
+    initialpage = 'http://china.aiddata.org/projects?utf8=%E2%9C%93&search='
 
     urlpath = 'http://china.aiddata.org/projects/'
     projectid = 2521
-    testurlpath = urlpath + str(projectid)
-    #--------
+    # testurlpath = urlpath + str(projectid)
 
-    # dataset = main(testurlpath)
-    # print dataset[0]
+    africa = nolsql('ChinaAidProjectDetail.db').collection('africa')
+    africa.create()
 
-    #-----------
-    #-----------
-    # do next
-    initialpage = 'http://china.aiddata.org/projects?utf8=%E2%9C%93&search='
-    UrlGenerator(initialpage)
+    Cr = africa.filter(lambda obj: obj['ID'] != None)
+    collected = [c['ID'] for c in Cr]
+    # print collected
 
-    # print ts.text
+    urllist = pd.read_csv('ChinaAid_own.csv')['Url'].tolist()
+    idurl = [(ur.split('/')[-1], ur) for ur in urllist]
+    uncollected = []
+    for i in idurl:
+        if i[0] in collected:
+            pass
+        else:
+            uncollected.append(i)
+
+    count = 0
+    retry = 0
+    lenfile = len(uncollected)
+    multipool = False
+    # print len(idurl), lenfile
+    if lenfile != 0:
+        if multipool == False:
+            for (ids, url) in uncollected:
+
+                f = time.time()
+                try:
+                    data, link = main(url)
+                    # print data
+                    africa.store(
+                        {"data": data.maps, "link": link.maps, "ID": ids})
+                    count = count + 1
+                    if retry > 5:
+                        retry = retry - 1
+                except IndexError, e:
+                    print e
+                    retry = retry + 1
+
+                    if retry > 20:
+                        raise IndexError, 'Max retries, Will Stop'
+
+                else:
+                    time.sleep(5)
+                time.sleep(1)
+                progress_test(count, lenfile, time.time() - f)
+        else:
+            chunked = chunks(uncollected, 48)
+            pool = mp.Pool()
+
+            for chunk in chunked:
+                templist = pool.map(dosomething, chunk)
+
+                africa.store(templist)
+                time.sleep(5)
+
+                # for afkey, value in africa.all():
+
+                # print pd.DataFrame.from_dict(data.maps)
+                # print link.keys()
+                #--------
+
+                # dataset = main(testurlpath)
+                # print dataset[0]
+
+                #-----------
+                #-----------
+                # do next
+
+                # UrlGenerator(initialpage)
+
+                # print ts.text
