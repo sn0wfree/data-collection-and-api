@@ -554,14 +554,17 @@ if __name__ == '__main__':
     projectid = 2521
     # testurlpath = urlpath + str(projectid)
 
-    africa = nolsql('ChinaAidProjectDetail.db').collection('africa')
+    africa = nolsql('ChinaAidProjectDetail2.db').collection('africa')
     africa.create()
 
     Cr = africa.filter(lambda obj: obj['ID'] != None)
-    collected = [c['ID'] for c in Cr]
+    # print Cr
+    collected = [c['ID'] for c in Cr if c != None]
+
     # print collected
 
     urllist = pd.read_csv('ChinaAid_own.csv')['Url'].tolist()
+    # print collected, len(collected), pd.read_csv('ChinaAid_own.csv').shape
     idurl = [(ur.split('/')[-1], ur) for ur in urllist]
     uncollected = []
     for i in idurl:
@@ -573,6 +576,7 @@ if __name__ == '__main__':
     count = 0
     retry = 0
     lenfile = len(uncollected)
+    lenfile = 0
     multipool = False
     # print len(idurl), lenfile
     if lenfile != 0:
