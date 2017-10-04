@@ -1,4 +1,12 @@
 # -*- coding: utf-8 -*-
+# Copyright by sn0wfree 2017
+# --------------
+#
+
+__version__ = '0.1'
+__author__ = 'sn0wfree'
+#
+# -------------------
 import urllib2
 import requests
 import requests_cache
