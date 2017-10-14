@@ -15,7 +15,7 @@ __version__ = '0.01'
 
 # -------------------------------------------------------------------------
 
-import urllib2
+# import urllib2
 
 import pandas as pd
 import requests
@@ -87,6 +87,50 @@ if __name__ == '__main__':
     # print urllib2.urlopen(urllib2.Request(url_zh,
     # headers=headers)).read().decode('utf-8')
     # print requests.get(url_zh, headers=headers).text
-    htmlfile = 'htmlwikiminstry.html'
-    print urllib2.
-    .urlopen(htmlfile, 'html').read().decode('utf-8')
+
+    with open('htmlwikiminstry.html', 'r') as wikiminstry:
+        minstry = wikiminstry.read()
+
+    minstrytext = etree.HTML(minstry)
+    maininfo_name = minstrytext.xpath(
+        "//span[@id='.E5.8E.86.E5.B1.8A.E5.9B.BD.E5.8A.A1.E9.99.A2.E4.B8.BB.E8.A6.81.E6.83.85.E5.86.B5']/..")[0]
+    first = maininfo_name.getnext().getnext().getnext()
+    li = []
+    tt = minstrytext.xpath(
+        "//div[@class='rellink noprint relarticle mainarticle']")
+    # print dir(tt[-1].getnext().getnext().getnext().getnext().getnext())
+    print tt[-1].getnext().getnext().getnext().getnext().getnext() == None
+    print type(first.tag) == str
+    print first.getchildren()[1].text
+
+
+class Catchinfo():
+
+    def __init__(self, element):
+        self.collection = {}
+        self.initialelement = element
+        self.nextelement = ''
+
+    def detecttag(self, element):
+        if element.tag == 'h3':
+            name = element.getchildren()[1].text
+            self.detecttag(element.getnext())
+        elif type(element.tag) != str:
+            return 'end'
+
+
+def detecttag(element, li):
+    if element == None:
+
+    elif element.tag == 'h3':
+        # name
+        li.append(element)
+        detecttag(element.getnext(), li)
+
+    elif type(element.tag) != str:
+
+        # end
+        pass
+
+    else:
+        detecttag(element.getnext(), li)
