@@ -99,9 +99,13 @@ if __name__ == '__main__':
     tt = minstrytext.xpath(
         "//div[@class='rellink noprint relarticle mainarticle']")
     # print dir(tt[-1].getnext().getnext().getnext().getnext().getnext())
-    print tt[-1].getnext().getnext().getnext().getnext().getnext() == None
+    print first.getnext().getnext().getchildren()
     print type(first.tag) == str
     print first.getchildren()[1].text
+    for s in first.getnext().getnext().iterchildren():
+        print s.text
+        for u in s.iterchildren():
+            print u.text
 
 
 class Catchinfo():
@@ -112,15 +116,35 @@ class Catchinfo():
         self.nextelement = ''
 
     def detecttag(self, element):
-        if element.tag == 'h3':
-            name = element.getchildren()[1].text
-            self.detecttag(element.getnext())
-        elif type(element.tag) != str:
-            return 'end'
+        try:
+            if element.tag == 'h3':
+                name = element.getchildren()[1].text
+                return name
+
+            elif element.tag == 'p':
+                title = element.getchildren()[0].text
+                # link
+                d = [(child.text, child.attrib['href'])
+                     for child in element.getchildren()]
+                return d
+
+            elif element.tag == 'ul':
+                for child in element.getchildren():
+                    print child
+            elif element.tag == 'div':
+                pass
+
+            elif type(element.tag) != str:
+                return 'no str'
+
+        except Exception as e:
+            if element == None:
+                return 'end'
 
 
 def detecttag(element, li):
     if element == None:
+        pass
 
     elif element.tag == 'h3':
         # name
