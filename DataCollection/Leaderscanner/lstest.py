@@ -10,12 +10,14 @@ This code is for personal use.
 
 
 __author__ = 'sn0wfree'
-__version__ = '0.01'
+__version__ = '0.02'
 
 
 # -------------------------------------------------------------------------
 
 # import urllib2
+
+import collections
 
 import pandas as pd
 import requests
@@ -72,6 +74,61 @@ def downloadwikipagefromdump():
 
 # downloadwikipagefromdump()
 
+
+class Catchinfo():
+
+    def __init__(self):
+        self.collection = collections.OrderedDict()
+        self.temp = []
+
+    def loop(self, element):
+        while element is not None:
+            tag, value = self.detecttag(element)
+
+            if tag == 'h3':
+                if self.temp != []:
+                    self.collection.update({self.temp[0]: self.temp[1:]})
+                    self.temp = []
+                    self.temp.append(value)
+            elif tag == 'pass':
+                pass
+            else:
+                self.temp.append(value)
+
+            element = element.getnext()
+
+    def detecttag(self, element):
+        try:
+            if element.tag == 'h3':
+                name = element.getchildren()[1].text
+                return 'h3', name
+
+            elif element.tag == 'p':
+                title = element.getchildren()[0].text
+                # link
+                link = [(child.text.strip(), child.attrib['href'])
+                        for child in element.getchildren()]
+                return 'p', title
+            elif element.tag == 'ul':
+                return 'ul', {child.text.strip(): [u.text.strip() for u in child.iterchildren()]
+                              for child in element.iterchildren()}
+
+            elif element.tag == 'div':
+                return 'pass', 'div'
+
+            elif type(element.tag) != str:
+                return 'pass', 'none str'
+            else:
+                return 'pass', '%s' % element.tag
+
+        except Exception as e:
+            if element == None:
+                return 'end', None
+            else:
+                return 'error', (element, element.tag)
+                # raise ValueError, 'Unexpected error'
+
+
 if __name__ == '__main__':
     requests_cache.install_cache(
         cache_name="Leader", backend="sqlite", expire_date=300)
@@ -95,66 +152,24 @@ if __name__ == '__main__':
     maininfo_name = minstrytext.xpath(
         "//span[@id='.E5.8E.86.E5.B1.8A.E5.9B.BD.E5.8A.A1.E9.99.A2.E4.B8.BB.E8.A6.81.E6.83.85.E5.86.B5']/..")[0]
     first = maininfo_name.getnext().getnext().getnext()
+    # print first.tag
     li = []
     tt = minstrytext.xpath(
         "//div[@class='rellink noprint relarticle mainarticle']")
-    # print dir(tt[-1].getnext().getnext().getnext().getnext().getnext())
-    print first.getnext().getnext().getchildren()
-    print type(first.tag) == str
-    print first.getchildren()[1].text
-    for s in first.getnext().getnext().iterchildren():
-        print s.text
-        for u in s.iterchildren():
-            print u.text
+    # print tt[-1].getnext().getnext().getnext().getnext().getnext().getnext()
+    # print first.getnext().getnext().getchildren()
+    # print type(first.tag) == str
+    # print first.getchildren()[1].text
+    d = {s.text.strip(): [u.text for u in s.iterchildren()]
+         for s in first.getnext().getnext().iterchildren()}
 
+    c = Catchinfo()
+    c.loop(first)
+    for k, v in c.collection.items():
+        if '十'.decode('utf-8') in k:
+            for vs in v:
+                if isinstance(vs, dict):
+                    for key, values in vs.items():
+                        for value in values:
 
-class Catchinfo():
-
-    def __init__(self, element):
-        self.collection = {}
-        self.initialelement = element
-        self.nextelement = ''
-
-    def detecttag(self, element):
-        try:
-            if element.tag == 'h3':
-                name = element.getchildren()[1].text
-                return name
-
-            elif element.tag == 'p':
-                title = element.getchildren()[0].text
-                # link
-                d = [(child.text, child.attrib['href'])
-                     for child in element.getchildren()]
-                return d
-
-            elif element.tag == 'ul':
-                for child in element.getchildren():
-                    print child
-            elif element.tag == 'div':
-                pass
-
-            elif type(element.tag) != str:
-                return 'no str'
-
-        except Exception as e:
-            if element == None:
-                return 'end'
-
-
-def detecttag(element, li):
-    if element == None:
-        pass
-
-    elif element.tag == 'h3':
-        # name
-        li.append(element)
-        detecttag(element.getnext(), li)
-
-    elif type(element.tag) != str:
-
-        # end
-        pass
-
-    else:
-        detecttag(element.getnext(), li)
+                            print k, key, ":", value
