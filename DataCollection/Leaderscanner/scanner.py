@@ -16,6 +16,7 @@ __version__ = '0.02'
 import datetime
 import multiprocessing as mp
 import sys
+import time
 
 import chardet
 import pandas as pd
@@ -116,8 +117,8 @@ class ScanFMPRCGov():
                 if u.tag == 'ul':
 
                     for li in u.getchildren():
-                        text = li.xpath('string(.)')[:-12]
-                        date = li.xpath('string(.)')[-11:-1]
+                        text = li.xpath('string(.)')[:-12].encode('utf-8')
+                        date = li.xpath('string(.)')[-11:-1].encode('utf-8')
                         if len(li.getchildren()) == 1:
                             href = root + \
                                 li.getchildren()[0].attrib['href'][1:]
@@ -149,9 +150,19 @@ if __name__ == '__main__':
     #url = public[1]
     # print url
     scanner = ScanFMPRCGov(public)
-    data = scanner.multiprocessing(public)
+    #data = scanner.multiprocessing(public)
+    count = 0
+    for url in public:
+        f = time.time()
 
-    pd.DataFrame(data, columns=['Text', 'Date', 'Url']).to_csv('fmprcscan.csv')
+        scanner.ScanWebPage(url)
+        count += 1
+        time.sleep(1)
+
+        progress_test(count, len(public), time.time() - f)
+
+    pd.DataFrame(scanner.data, columns=[
+                 'Text', 'Date', 'Url']).to_csv('fmprcscan.csv')
 
 
 # print RepalceYMD2Eng(ministry['End'],status='Parse')
