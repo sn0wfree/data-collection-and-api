@@ -12,13 +12,6 @@ This code is for personal use.
 __author__ = 'sn0wfree'
 __version__ = '0.02'
 
-# Copyright by Lin Lu 2017
-# version control
-
-
-__author__ = 'sn0wfree'
-__version__ = '0.02'
-
 
 import datetime
 import multiprocessing as mp
@@ -30,7 +23,8 @@ import xlrd
 class TaxCal():
 
     def __init__(self,  TaxTable, memberdict):
-        #{name:(salary,bonus)}
+        # initial the class
+        # set up the dataset
         self.salaryandbonus = memberdict
         self.salarydiv = 3
         self.initlevel = 0
@@ -45,8 +39,9 @@ class TaxCal():
         a = 100 - salary % 100
         tax = self.CalTax(salary + bonus / 3) * 2 + \
             self.CalTax(salary + bonus - bonus / 3 - bonus / 3)
-        mini = min(bonus / 3, bonus - bonus / 3 - bonus / 3)
-        maxi = max(bonus / 3, bonus - bonus / 3 - bonus / 3)
+        temp=(bonus / 3, bonus - bonus / 3 - bonus / 3)
+        mini = min(temp)
+        maxi = max(temp)
         comp = (maxi + salary, salary + bonus - mini - maxi, salary + mini)
 
         t = int(bonus / 3)
