@@ -16,6 +16,7 @@ __version__ = '0.02'
 import datetime
 import multiprocessing as mp
 
+import numpy as np
 import pandas as pd
 import xlrd
 
@@ -39,7 +40,7 @@ class TaxCal():
         a = 100 - salary % 100
         tax = self.CalTax(salary + bonus / 3) * 2 + \
             self.CalTax(salary + bonus - bonus / 3 - bonus / 3)
-        temp=(bonus / 3, bonus - bonus / 3 - bonus / 3)
+        temp = (bonus / 3, bonus - bonus / 3 - bonus / 3)
         mini = min(temp)
         maxi = max(temp)
         comp = (maxi + salary, salary + bonus - mini - maxi, salary + mini)

@@ -1,0 +1,3382 @@
+{
+    "error_code": 0,
+    "reason": "ok",
+    "result": {
+        "path": [
+            {
+                "type": "name",
+                "value": "陈德强"
+            },
+            {
+                "type": "percent",
+                "value": "33.03%"
+            },
+            {
+                "type": "name",
+                "value": "苏州朗动网络科技有限公司"
+            }
+        ],
+        "structure": {
+            "id": "2309647430",
+            "name": "苏州朗动网络科技有限公司",
+            "type": "C",
+            "amount": null,
+            "percent": null,
+            "sh_type": null,
+            "children": [
+                {
+                    "id": "2252402308",
+                    "name": "陈德强",
+                    "type": "H",
+                    "amount": "99.6167",
+                    "percent": "33.03%",
+                    "sh_type": "工商股东",
+                    "children": [],
+                    "regCapital": null,
+                    "parentName": null,
+                    "actualHolding": true
+                },
+                {
+                    "id": "24841019",
+                    "name": "杭州险峰投资合伙企业（有限合伙）",
+                    "type": "C",
+                    "amount": "25.0",
+                    "percent": "11.11%",
+                    "sh_type": "工商股东",
+                    "children": [
+                        {
+                            "id": "2121397452",
+                            "name": "肖常兴",
+                            "type": "H",
+                            "amount": "1500.0",
+                            "percent": "5.00%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "1906237160",
+                            "name": "左凌烨",
+                            "type": "H",
+                            "amount": "5000.0",
+                            "percent": "16.67%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2210543114",
+                            "name": "邵振平",
+                            "type": "H",
+                            "amount": "1000.0",
+                            "percent": "3.33%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2077933327",
+                            "name": "王辉",
+                            "type": "H",
+                            "amount": "1000.0",
+                            "percent": "3.33%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2264719569",
+                            "name": "雷量",
+                            "type": "H",
+                            "amount": "1800.0",
+                            "percent": "6.00%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "1810583984",
+                            "name": "刘峻",
+                            "type": "H",
+                            "amount": "3400.0",
+                            "percent": "11.33%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "1802251152",
+                            "name": "冯涛",
+                            "type": "H",
+                            "amount": "1000.0",
+                            "percent": "3.33%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2215407843",
+                            "name": "郑伟鹤",
+                            "type": "H",
+                            "amount": "1000.0",
+                            "percent": "3.33%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2289891941",
+                            "name": "魏炜",
+                            "type": "H",
+                            "amount": "1000.0",
+                            "percent": "3.33%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2259192116",
+                            "name": "陈金霞",
+                            "type": "H",
+                            "amount": "1000.0",
+                            "percent": "3.33%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "1940602925",
+                            "name": "徐少颖",
+                            "type": "H",
+                            "amount": "4300.0",
+                            "percent": "14.33%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "15047012",
+                            "name": "西藏险峰管理咨询有限公司",
+                            "type": "C",
+                            "amount": "439.0",
+                            "percent": "1.46%",
+                            "sh_type": "工商股东",
+                            "children": [
+                                {
+                                    "id": "1820816123",
+                                    "name": "包锦堂",
+                                    "type": "H",
+                                    "amount": "10.0",
+                                    "percent": "10.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2256820016",
+                                    "name": "陈科屹",
+                                    "type": "H",
+                                    "amount": "90.0",
+                                    "percent": "90.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                }
+                            ],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "1608113",
+                            "name": "拉萨合业投资管理有限公司",
+                            "type": "C",
+                            "amount": "1000.0",
+                            "percent": "3.33%",
+                            "sh_type": "工商股东",
+                            "children": [
+                                {
+                                    "id": "1858268863",
+                                    "name": "周逵",
+                                    "type": "H",
+                                    "amount": "7.0",
+                                    "percent": "70.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2068660494",
+                                    "name": "王子暄",
+                                    "type": "H",
+                                    "amount": "3.0",
+                                    "percent": "30.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                }
+                            ],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "137486074",
+                            "name": "达孜基石创业投资合伙企业（有限合伙）",
+                            "type": "C",
+                            "amount": "3200.0",
+                            "percent": "10.67%",
+                            "sh_type": "工商股东",
+                            "children": [
+                                {
+                                    "id": "1995092991",
+                                    "name": "杜永波",
+                                    "type": "H",
+                                    "amount": "-",
+                                    "percent": "-",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2071587989",
+                                    "name": "王新卫",
+                                    "type": "H",
+                                    "amount": "-",
+                                    "percent": "-",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "24205189",
+                                    "name": "上海华石投资有限公司",
+                                    "type": "C",
+                                    "amount": "-",
+                                    "percent": "-",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "2071587989",
+                                            "name": "王新卫",
+                                            "type": "H",
+                                            "amount": "0.2",
+                                            "percent": "1.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "1820816123",
+                                            "name": "包锦堂",
+                                            "type": "H",
+                                            "amount": "19.8",
+                                            "percent": "99.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                }
+                            ],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2341742499",
+                            "name": "西藏玉朱投资咨询有限公司",
+                            "type": "C",
+                            "amount": "361.0",
+                            "percent": "1.20%",
+                            "sh_type": "工商股东",
+                            "children": [
+                                {
+                                    "id": "2091687112",
+                                    "name": "石宏",
+                                    "type": "H",
+                                    "amount": "210.0",
+                                    "percent": "20.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "1807347938",
+                                    "name": "刘佳",
+                                    "type": "H",
+                                    "amount": "840.0",
+                                    "percent": "80.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                }
+                            ],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "972485699",
+                            "name": "上海创业接力铂慧投资管理中心（有限合伙）",
+                            "type": "C",
+                            "amount": "2000.0",
+                            "percent": "6.67%",
+                            "sh_type": "工商股东",
+                            "children": [
+                                {
+                                    "id": "972492845",
+                                    "name": "上海铂慧创业投资有限公司",
+                                    "type": "C",
+                                    "amount": "-",
+                                    "percent": "-",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "294900635",
+                                            "name": "上海创业接力科技金融集团有限公司",
+                                            "type": "C",
+                                            "amount": "-",
+                                            "percent": "100%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "972492746",
+                                    "name": "上海睿川创业投资管理有限公司",
+                                    "type": "C",
+                                    "amount": "-",
+                                    "percent": "-",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "1925707432",
+                                            "name": "张德旺",
+                                            "type": "H",
+                                            "amount": "25",
+                                            "percent": "25.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2027308629",
+                                            "name": "欧阳金",
+                                            "type": "H",
+                                            "amount": "5",
+                                            "percent": "5.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2093932834",
+                                            "name": "祁玉伟",
+                                            "type": "H",
+                                            "amount": "5",
+                                            "percent": "5.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "972513788",
+                                            "name": "上海接力天使创业投资管理有限公司",
+                                            "type": "C",
+                                            "amount": "50",
+                                            "percent": "50.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                }
+                            ],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "701688044",
+                            "name": "上海嵩全投资管理有限公司",
+                            "type": "C",
+                            "amount": "1000.0",
+                            "percent": "3.33%",
+                            "sh_type": "工商股东",
+                            "children": [
+                                {
+                                    "id": "2343959796",
+                                    "name": "张伟",
+                                    "type": "H",
+                                    "amount": "650",
+                                    "percent": "65.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "1819689304",
+                                    "name": "劳苑苑",
+                                    "type": "H",
+                                    "amount": "-",
+                                    "percent": "-",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                }
+                            ],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        }
+                    ],
+                    "regCapital": null,
+                    "parentName": null,
+                    "actualHolding": false
+                },
+                {
+                    "id": "1997122096",
+                    "name": "杨京",
+                    "type": "H",
+                    "amount": "32.2009",
+                    "percent": "10.68%",
+                    "sh_type": "工商股东",
+                    "children": [],
+                    "regCapital": null,
+                    "parentName": null,
+                    "actualHolding": false
+                },
+                {
+                    "id": "1958085864",
+                    "name": "施阳",
+                    "type": "H",
+                    "amount": "20.965",
+                    "percent": "6.95%",
+                    "sh_type": "工商股东",
+                    "children": [],
+                    "regCapital": null,
+                    "parentName": null,
+                    "actualHolding": false
+                },
+                {
+                    "id": "2412143181",
+                    "name": "宁波竑观聚益投资管理中心（有限合伙）",
+                    "type": "C",
+                    "amount": "12.0171",
+                    "percent": "3.98%",
+                    "sh_type": "工商股东",
+                    "children": [
+                        {
+                            "id": "2220085866",
+                            "name": "郑金铸",
+                            "type": "H",
+                            "amount": "104.0",
+                            "percent": "9.97%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2012633530",
+                            "name": "林雪青",
+                            "type": "H",
+                            "amount": "208.0",
+                            "percent": "19.94%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "1978350223",
+                            "name": "李为民",
+                            "type": "H",
+                            "amount": "104.0",
+                            "percent": "9.97%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2072603852",
+                            "name": "王杰",
+                            "type": "H",
+                            "amount": "208.0",
+                            "percent": "19.94%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "1850356591",
+                            "name": "吴重茂",
+                            "type": "H",
+                            "amount": "104.0",
+                            "percent": "9.97%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "1722876472",
+                            "name": "上海竑观资产管理有限公司",
+                            "type": "C",
+                            "amount": "3.0",
+                            "percent": "0.29%",
+                            "sh_type": "工商股东",
+                            "children": [
+                                {
+                                    "id": "1985781960",
+                                    "name": "李晓琳",
+                                    "type": "H",
+                                    "amount": "138.8",
+                                    "percent": "10.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "1883104378",
+                                    "name": "孙霄汉",
+                                    "type": "H",
+                                    "amount": "138.8",
+                                    "percent": "10.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "1814718015",
+                                    "name": "刘珍玲",
+                                    "type": "H",
+                                    "amount": "138.8",
+                                    "percent": "10.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2009210482",
+                                    "name": "林慧勤",
+                                    "type": "H",
+                                    "amount": "319.24",
+                                    "percent": "23.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                }
+                            ],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2630703913",
+                            "name": "宁波梅山保税港区畅驰凯祥股权投资基金合伙企业（有限合伙）",
+                            "type": "C",
+                            "amount": "312.0",
+                            "percent": "29.91%",
+                            "sh_type": "工商股东",
+                            "children": [
+                                {
+                                    "id": "2001098510",
+                                    "name": "杨文杰",
+                                    "type": "H",
+                                    "amount": "1960.0",
+                                    "percent": "51.58%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2160475954",
+                                    "name": "虞晓明",
+                                    "type": "H",
+                                    "amount": "300.0",
+                                    "percent": "7.89%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2274737106",
+                                    "name": "颜伟阳",
+                                    "type": "H",
+                                    "amount": "300.0",
+                                    "percent": "7.89%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "1942427036",
+                                    "name": "徐海峰",
+                                    "type": "H",
+                                    "amount": "200.0",
+                                    "percent": "5.26%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2270336986",
+                                    "name": "韩新",
+                                    "type": "H",
+                                    "amount": "200.0",
+                                    "percent": "5.26%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "1928081078",
+                                    "name": "张梦恒",
+                                    "type": "H",
+                                    "amount": "600.0",
+                                    "percent": "15.79%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "1989937553",
+                                    "name": "李群仙",
+                                    "type": "H",
+                                    "amount": "100.0",
+                                    "percent": "2.63%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "1754488469",
+                                    "name": "丁为民",
+                                    "type": "H",
+                                    "amount": "100.0",
+                                    "percent": "2.63%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2350668506",
+                                    "name": "杭州智汇钱潮股权投资管理有限公司",
+                                    "type": "C",
+                                    "amount": "40.0",
+                                    "percent": "1.05%",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "2319575256",
+                                            "name": "滕百欣",
+                                            "type": "H",
+                                            "amount": "149.94",
+                                            "percent": "74.97%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "1774413895",
+                                            "name": "任少英",
+                                            "type": "H",
+                                            "amount": "19.6",
+                                            "percent": "9.80%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2112610720",
+                                            "name": "罗建幸",
+                                            "type": "H",
+                                            "amount": "26.46",
+                                            "percent": "13.23%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2350668507",
+                                            "name": "宋恭律",
+                                            "type": "H",
+                                            "amount": "4.0",
+                                            "percent": "2.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                }
+                            ],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        }
+                    ],
+                    "regCapital": null,
+                    "parentName": null,
+                    "actualHolding": false
+                },
+                {
+                    "id": "140885265",
+                    "name": "成都鼎兴量子投资管理有限公司",
+                    "type": "C",
+                    "amount": "3.6051",
+                    "percent": "1.20%",
+                    "sh_type": "工商股东",
+                    "children": [
+                        {
+                            "id": "198835434",
+                            "name": "国金鼎兴投资有限公司",
+                            "type": "C",
+                            "amount": "510",
+                            "percent": "19.62%",
+                            "sh_type": "工商股东",
+                            "children": [
+                                {
+                                    "id": "25459798",
+                                    "name": "国金证券股份有限公司",
+                                    "type": "C",
+                                    "amount": "-",
+                                    "percent": "100%",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "439969966",
+                                            "name": "长沙九芝堂（集团）有限公司",
+                                            "type": "C",
+                                            "amount": "-",
+                                            "percent": "18.09%",
+                                            "sh_type": "十大股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": true
+                                        },
+                                        {
+                                            "id": "26400647",
+                                            "name": "涌金投资控股有限公司",
+                                            "type": "C",
+                                            "amount": "-",
+                                            "percent": "9.34%",
+                                            "sh_type": "十大股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "1024055",
+                                            "name": "清华控股有限公司",
+                                            "type": "C",
+                                            "amount": "-",
+                                            "percent": "4.65%",
+                                            "sh_type": "十大股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "0",
+                                            "name": "清华控股-中德证券-清控可交换债担保及信托财产专户",
+                                            "type": "C",
+                                            "amount": "-",
+                                            "percent": "4.03%",
+                                            "sh_type": "十大股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "18499007",
+                                            "name": "中国证券金融股份有限公司",
+                                            "type": "C",
+                                            "amount": "-",
+                                            "percent": "3.57%",
+                                            "sh_type": "十大股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2310457667",
+                                            "name": "中央汇金资产管理有限责任公司",
+                                            "type": "C",
+                                            "amount": "-",
+                                            "percent": "1.55%",
+                                            "sh_type": "十大股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "0",
+                                            "name": "中国人寿保险股份有限公司-分红-个人分红-005L-FH002沪",
+                                            "type": "C",
+                                            "amount": "-",
+                                            "percent": "1.19%",
+                                            "sh_type": "十大股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "0",
+                                            "name": "中国人寿保险股份有限公司-传统-普通保险产品-005L-CT001沪",
+                                            "type": "C",
+                                            "amount": "-",
+                                            "percent": "0.92%",
+                                            "sh_type": "十大股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "0",
+                                            "name": "中国人民财产保险股份有限公司-传统-普通保险产品-008C-CT001沪",
+                                            "type": "C",
+                                            "amount": "-",
+                                            "percent": "0.91%",
+                                            "sh_type": "十大股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "0",
+                                            "name": "中国银行股份有限公司-招商中证全指证券公司指数分级证券投资基金",
+                                            "type": "C",
+                                            "amount": "-",
+                                            "percent": "0.77%",
+                                            "sh_type": "十大股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "1865160858",
+                                            "name": "国家股",
+                                            "type": "H",
+                                            "amount": "3348.27",
+                                            "percent": "-",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2046649524",
+                                            "name": "法人股",
+                                            "type": "H",
+                                            "amount": "1000.0",
+                                            "percent": "-",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "1761772084",
+                                            "name": "个人股",
+                                            "type": "H",
+                                            "amount": "2750.0",
+                                            "percent": "-",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "146185931",
+                                            "name": "其他股东增资",
+                                            "type": "C",
+                                            "amount": "295337.661",
+                                            "percent": "-",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                }
+                            ],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2388367194",
+                            "name": "宁波梅山保税港区长兴永朔资产管理有限公司",
+                            "type": "C",
+                            "amount": "1600",
+                            "percent": "61.54%",
+                            "sh_type": "工商股东",
+                            "children": [
+                                {
+                                    "id": "2230129592",
+                                    "name": "金宇航",
+                                    "type": "H",
+                                    "amount": "1840.0",
+                                    "percent": "92.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2328620441",
+                                    "name": "赖启天",
+                                    "type": "H",
+                                    "amount": "160.0",
+                                    "percent": "8.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                }
+                            ],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "198835376",
+                            "name": "成都锦城祥投资有限公司",
+                            "type": "C",
+                            "amount": "-",
+                            "percent": "-",
+                            "sh_type": "工商股东",
+                            "children": [
+                                {
+                                    "id": "2109498708",
+                                    "name": "纪超云",
+                                    "type": "H",
+                                    "amount": "1320.0",
+                                    "percent": "44.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2295517815",
+                                    "name": "黄兴旺",
+                                    "type": "H",
+                                    "amount": "60.0",
+                                    "percent": "2.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2033779290",
+                                    "name": "毛传平",
+                                    "type": "H",
+                                    "amount": "300.0",
+                                    "percent": "10.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "27514129",
+                                    "name": "四川特驱投资集团有限公司",
+                                    "type": "C",
+                                    "amount": "300.0",
+                                    "percent": "10.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "9100594",
+                                            "name": "成都华西希望集团有限公司",
+                                            "type": "C",
+                                            "amount": "27500.0",
+                                            "percent": "55.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "850356455",
+                                            "name": "四川普华农业科技发展有限公司",
+                                            "type": "C",
+                                            "amount": "22500.0",
+                                            "percent": "45.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "170201545",
+                                    "name": "四川省送变电建设有限责任公司",
+                                    "type": "C",
+                                    "amount": "360.0",
+                                    "percent": "12.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "2180202415",
+                                            "name": "谭清波",
+                                            "type": "H",
+                                            "amount": "153.61",
+                                            "percent": "1.41%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2175494667",
+                                            "name": "谢宏林",
+                                            "type": "H",
+                                            "amount": "98.47",
+                                            "percent": "0.90%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "1953530030",
+                                            "name": "文锋",
+                                            "type": "H",
+                                            "amount": "-",
+                                            "percent": "-",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "1957406970",
+                                            "name": "施松",
+                                            "type": "H",
+                                            "amount": "98.47",
+                                            "percent": "0.90%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2169952696",
+                                            "name": "许卫",
+                                            "type": "H",
+                                            "amount": "85.33",
+                                            "percent": "0.78%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "1776887457",
+                                            "name": "伍壁强",
+                                            "type": "H",
+                                            "amount": "136.54",
+                                            "percent": "1.25%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "1838415714",
+                                            "name": "向兴林",
+                                            "type": "H",
+                                            "amount": "886.5",
+                                            "percent": "8.13%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "266083766",
+                                            "name": "四川省网源电力开发有限公司",
+                                            "type": "C",
+                                            "amount": "6815",
+                                            "percent": "62.49%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2064636747",
+                                            "name": "王丽彬",
+                                            "type": "H",
+                                            "amount": "91.9",
+                                            "percent": "0.84%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "1927214003",
+                                            "name": "张晓波",
+                                            "type": "H",
+                                            "amount": "181.18",
+                                            "percent": "1.66%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "1982533654",
+                                            "name": "李学英",
+                                            "type": "H",
+                                            "amount": "91.9",
+                                            "percent": "0.84%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2353584340",
+                                            "name": "李平",
+                                            "type": "H",
+                                            "amount": "107.66",
+                                            "percent": "0.99%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2007563151",
+                                            "name": "林卫国",
+                                            "type": "H",
+                                            "amount": "89.28",
+                                            "percent": "0.82%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "1987191866",
+                                            "name": "李沁锾",
+                                            "type": "H",
+                                            "amount": "99.78",
+                                            "percent": "0.91%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2298821999",
+                                            "name": "黄晓阳",
+                                            "type": "H",
+                                            "amount": "122.1",
+                                            "percent": "1.12%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "1771444809",
+                                            "name": "付顺成",
+                                            "type": "H",
+                                            "amount": "182.49",
+                                            "percent": "1.67%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2041593572",
+                                            "name": "汪晓祥",
+                                            "type": "H",
+                                            "amount": "270.46",
+                                            "percent": "2.48%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2295847934",
+                                            "name": "黄勰",
+                                            "type": "H",
+                                            "amount": "86.65",
+                                            "percent": "0.79%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "1773196878",
+                                            "name": "仲应贵",
+                                            "type": "H",
+                                            "amount": "946.49",
+                                            "percent": "8.68%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "195635656",
+                                    "name": "四川省西点电力设计有限公司",
+                                    "type": "C",
+                                    "amount": "270.0",
+                                    "percent": "9.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "1773196878",
+                                            "name": "仲应贵",
+                                            "type": "H",
+                                            "amount": "579.0",
+                                            "percent": "32.17%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "390321132",
+                                            "name": "广西桂东电力股份有限公司",
+                                            "type": "C",
+                                            "amount": "918.0",
+                                            "percent": "51.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "170201545",
+                                            "name": "四川省送变电建设有限责任公司",
+                                            "type": "C",
+                                            "amount": "83.6",
+                                            "percent": "4.64%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "3023840336",
+                                            "name": "成都西点电力工程有限公司",
+                                            "type": "C",
+                                            "amount": "219.4",
+                                            "percent": "12.19%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "198912767",
+                                    "name": "四川省汇川送变电建设有限责任公司",
+                                    "type": "C",
+                                    "amount": "390.0",
+                                    "percent": "13.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "2040588347",
+                                            "name": "汪凤英",
+                                            "type": "H",
+                                            "amount": "720.0",
+                                            "percent": "30.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2041593572",
+                                            "name": "汪晓祥",
+                                            "type": "H",
+                                            "amount": "1680.0",
+                                            "percent": "70.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                }
+                            ],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        }
+                    ],
+                    "regCapital": null,
+                    "parentName": null,
+                    "actualHolding": false
+                },
+                {
+                    "id": "2349385937",
+                    "name": "苏州天宫一号投资中心（有限合伙）",
+                    "type": "C",
+                    "amount": "3.6051",
+                    "percent": "1.20%",
+                    "sh_type": "工商股东",
+                    "children": [
+                        {
+                            "id": "1870488388",
+                            "name": "姚尧",
+                            "type": "H",
+                            "amount": "-",
+                            "percent": "-",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2332870474",
+                            "name": "陆玥婷",
+                            "type": "H",
+                            "amount": "-",
+                            "percent": "-",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2045820046",
+                            "name": "沈雁",
+                            "type": "H",
+                            "amount": "-",
+                            "percent": "-",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "69920332",
+                            "name": "江苏苏大天宫创业投资管理有限公司",
+                            "type": "C",
+                            "amount": "-",
+                            "percent": "-",
+                            "sh_type": "工商股东",
+                            "children": [
+                                {
+                                    "id": "2162660600",
+                                    "name": "袁方",
+                                    "type": "H",
+                                    "amount": "590.64",
+                                    "percent": "23.16%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "823447294",
+                                    "name": "江苏苏大投资有限公司",
+                                    "type": "C",
+                                    "amount": "65.61",
+                                    "percent": "2.57%",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "2349386111",
+                                            "name": "苏州大学",
+                                            "type": "H",
+                                            "amount": "-",
+                                            "percent": "100%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "26615904",
+                                    "name": "波司登股份有限公司",
+                                    "type": "C",
+                                    "amount": "1893.75",
+                                    "percent": "74.26%",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "2130343881",
+                                            "name": "自然人持股",
+                                            "type": "C",
+                                            "amount": "335.1096",
+                                            "percent": "3.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "13420368",
+                                            "name": "法人股",
+                                            "type": "H",
+                                            "amount": "10844.8904",
+                                            "percent": "97.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                }
+                            ],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "850314120",
+                            "name": "苏州太联创业投资中心（有限合伙）",
+                            "type": "C",
+                            "amount": "-",
+                            "percent": "-",
+                            "sh_type": "工商股东",
+                            "children": [
+                                {
+                                    "id": "815361230",
+                                    "name": "苏州长江大都会发展有限公司",
+                                    "type": "C",
+                                    "amount": "-",
+                                    "percent": "-",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "815364046",
+                                            "name": "苏州高铁新城经济发展有限公司",
+                                            "type": "C",
+                                            "amount": "-",
+                                            "percent": "100%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2349594923",
+                                    "name": "苏州环秀湖实业发展有限公司",
+                                    "type": "C",
+                                    "amount": "-",
+                                    "percent": "-",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "2349594926",
+                                            "name": "苏州市相城区北河泾街道常楼社区居民委员会",
+                                            "type": "C",
+                                            "amount": "-",
+                                            "percent": "-",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2349594925",
+                                            "name": "苏州市相城区北河泾街道胡巷社区居民委员会",
+                                            "type": "C",
+                                            "amount": "-",
+                                            "percent": "-",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2349594924",
+                                            "name": "苏州市相城区北河泾街道朱泾社区居民委员会",
+                                            "type": "C",
+                                            "amount": "-",
+                                            "percent": "-",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "3068192513",
+                                    "name": "苏州高铁新城创新创业投资有限公司",
+                                    "type": "C",
+                                    "amount": "-",
+                                    "percent": "-",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "1139550229",
+                                            "name": "苏州高铁新城国有资产经营管理有限公司",
+                                            "type": "C",
+                                            "amount": "-",
+                                            "percent": "100%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                }
+                            ],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2435816761",
+                            "name": "苏州天宫号投资管理有限公司",
+                            "type": "C",
+                            "amount": "-",
+                            "percent": "-",
+                            "sh_type": "工商股东",
+                            "children": [
+                                {
+                                    "id": "69920332",
+                                    "name": "江苏苏大天宫创业投资管理有限公司",
+                                    "type": "C",
+                                    "amount": "-",
+                                    "percent": "100%",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "2162660600",
+                                            "name": "袁方",
+                                            "type": "H",
+                                            "amount": "590.64",
+                                            "percent": "23.16%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "823447294",
+                                            "name": "江苏苏大投资有限公司",
+                                            "type": "C",
+                                            "amount": "65.61",
+                                            "percent": "2.57%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "26615904",
+                                            "name": "波司登股份有限公司",
+                                            "type": "C",
+                                            "amount": "1893.75",
+                                            "percent": "74.26%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                }
+                            ],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2349385940",
+                            "name": "苏州佐恒一号创业投资中心（有限合伙）",
+                            "type": "C",
+                            "amount": "-",
+                            "percent": "-",
+                            "sh_type": "工商股东",
+                            "children": [
+                                {
+                                    "id": "2233822601",
+                                    "name": "钟晓艳",
+                                    "type": "H",
+                                    "amount": "-",
+                                    "percent": "-",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "1974067529",
+                                    "name": "朱文明",
+                                    "type": "H",
+                                    "amount": "-",
+                                    "percent": "-",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2163011220",
+                                    "name": "袁永刚",
+                                    "type": "H",
+                                    "amount": "-",
+                                    "percent": "-",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2352278789",
+                                    "name": "江苏佐恒投资管理有限公司",
+                                    "type": "C",
+                                    "amount": "-",
+                                    "percent": "-",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "2229975705",
+                                            "name": "金夏",
+                                            "type": "H",
+                                            "amount": "900",
+                                            "percent": "90.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2352278790",
+                                            "name": "王喆豪",
+                                            "type": "H",
+                                            "amount": "100",
+                                            "percent": "10.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2351135312",
+                                    "name": "常熟市浩通水利工程有限公司",
+                                    "type": "C",
+                                    "amount": "-",
+                                    "percent": "-",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "1974340215",
+                                            "name": "朱晓明",
+                                            "type": "H",
+                                            "amount": "90.0",
+                                            "percent": "11.25%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "1975416984",
+                                            "name": "朱琴华",
+                                            "type": "H",
+                                            "amount": "710.0",
+                                            "percent": "88.75%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2349835309",
+                                    "name": "苏州绿导精密模具有限公司",
+                                    "type": "C",
+                                    "amount": "-",
+                                    "percent": "-",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "1985102912",
+                                            "name": "李文勇",
+                                            "type": "H",
+                                            "amount": "60.0",
+                                            "percent": "60.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2043392649",
+                                            "name": "沈冬梅",
+                                            "type": "H",
+                                            "amount": "40.0",
+                                            "percent": "40.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                }
+                            ],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        }
+                    ],
+                    "regCapital": null,
+                    "parentName": null,
+                    "actualHolding": false
+                },
+                {
+                    "id": "69920332",
+                    "name": "江苏苏大天宫创业投资管理有限公司",
+                    "type": "C",
+                    "amount": "2.4034",
+                    "percent": "0.80%",
+                    "sh_type": "工商股东",
+                    "children": [
+                        {
+                            "id": "2162660600",
+                            "name": "袁方",
+                            "type": "H",
+                            "amount": "590.64",
+                            "percent": "23.16%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "823447294",
+                            "name": "江苏苏大投资有限公司",
+                            "type": "C",
+                            "amount": "65.61",
+                            "percent": "2.57%",
+                            "sh_type": "工商股东",
+                            "children": [
+                                {
+                                    "id": "2349386111",
+                                    "name": "苏州大学",
+                                    "type": "H",
+                                    "amount": "-",
+                                    "percent": "100%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                }
+                            ],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "26615904",
+                            "name": "波司登股份有限公司",
+                            "type": "C",
+                            "amount": "1893.75",
+                            "percent": "74.26%",
+                            "sh_type": "工商股东",
+                            "children": [
+                                {
+                                    "id": "2130343881",
+                                    "name": "自然人持股",
+                                    "type": "C",
+                                    "amount": "335.1096",
+                                    "percent": "3.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "13420368",
+                                    "name": "法人股",
+                                    "type": "H",
+                                    "amount": "10844.8904",
+                                    "percent": "97.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                }
+                            ],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        }
+                    ],
+                    "regCapital": null,
+                    "parentName": null,
+                    "actualHolding": false
+                },
+                {
+                    "id": "2897875888",
+                    "name": "重庆悉见企业管理合伙企业（有限合伙）",
+                    "type": "C",
+                    "amount": "-",
+                    "percent": "-",
+                    "sh_type": "工商股东",
+                    "children": [
+                        {
+                            "id": "2180338882",
+                            "name": "谭畔",
+                            "type": "H",
+                            "amount": "0.0",
+                            "percent": "-",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "1906228393",
+                            "name": "左军",
+                            "type": "H",
+                            "amount": "0.0",
+                            "percent": "-",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        }
+                    ],
+                    "regCapital": null,
+                    "parentName": null,
+                    "actualHolding": false
+                },
+                {
+                    "id": "2309647432",
+                    "name": "深圳前海燧石鼎天投资合伙企业（有限合伙）",
+                    "type": "C",
+                    "amount": "-",
+                    "percent": "-",
+                    "sh_type": "工商股东",
+                    "children": [
+                        {
+                            "id": "2190339214",
+                            "name": "赵兴伟",
+                            "type": "H",
+                            "amount": "1200.0",
+                            "percent": "20.84%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2220546443",
+                            "name": "郗惠宁",
+                            "type": "H",
+                            "amount": "1000.0",
+                            "percent": "17.37%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2284457542",
+                            "name": "高姿",
+                            "type": "H",
+                            "amount": "2000.0",
+                            "percent": "34.74%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2296577467",
+                            "name": "黄士玮",
+                            "type": "H",
+                            "amount": "1000.0",
+                            "percent": "17.37%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2166714905",
+                            "name": "覃海宇",
+                            "type": "H",
+                            "amount": "500.0",
+                            "percent": "8.69%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2349726283",
+                            "name": "深圳前海燧石投资管理有限公司",
+                            "type": "C",
+                            "amount": "57.0",
+                            "percent": "0.99%",
+                            "sh_type": "工商股东",
+                            "children": [
+                                {
+                                    "id": "1812866423",
+                                    "name": "刘朝阳",
+                                    "type": "H",
+                                    "amount": "-",
+                                    "percent": "100%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                }
+                            ],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        }
+                    ],
+                    "regCapital": null,
+                    "parentName": null,
+                    "actualHolding": false
+                },
+                {
+                    "id": "531798417",
+                    "name": "苏州善登贸易有限公司",
+                    "type": "C",
+                    "amount": "-",
+                    "percent": "-",
+                    "sh_type": "工商股东",
+                    "children": [
+                        {
+                            "id": "2230708206",
+                            "name": "金文妹",
+                            "type": "H",
+                            "amount": "-",
+                            "percent": "100%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        }
+                    ],
+                    "regCapital": null,
+                    "parentName": null,
+                    "actualHolding": false
+                },
+                {
+                    "id": "2309647433",
+                    "name": "苏州知彼信息科技中心（有限合伙）",
+                    "type": "C",
+                    "amount": "-",
+                    "percent": "-",
+                    "sh_type": "工商股东",
+                    "children": [
+                        {
+                            "id": "2252402308",
+                            "name": "陈德强",
+                            "type": "H",
+                            "amount": "-",
+                            "percent": "-",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "1958085864",
+                            "name": "施阳",
+                            "type": "H",
+                            "amount": "-",
+                            "percent": "-",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "1809295246",
+                            "name": "刘培彬",
+                            "type": "H",
+                            "amount": "-",
+                            "percent": "-",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2078434831",
+                            "name": "王金虎",
+                            "type": "H",
+                            "amount": "-",
+                            "percent": "-",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "1898638165",
+                            "name": "尹尚文",
+                            "type": "H",
+                            "amount": "-",
+                            "percent": "-",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        }
+                    ],
+                    "regCapital": null,
+                    "parentName": null,
+                    "actualHolding": false
+                },
+                {
+                    "id": "2309647431",
+                    "name": "深圳市创东方互联网金融投资企业（有限合伙）",
+                    "type": "C",
+                    "amount": "-",
+                    "percent": "-",
+                    "sh_type": "工商股东",
+                    "children": [
+                        {
+                            "id": "1775900688",
+                            "name": "任超",
+                            "type": "H",
+                            "amount": "200.0",
+                            "percent": "3.57%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2162356101",
+                            "name": "袁建强",
+                            "type": "H",
+                            "amount": "1000.0",
+                            "percent": "17.83%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "1938130546",
+                            "name": "彭陈果",
+                            "type": "H",
+                            "amount": "200.0",
+                            "percent": "3.57%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2001820597",
+                            "name": "杨杰",
+                            "type": "H",
+                            "amount": "200.0",
+                            "percent": "3.57%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2306530163",
+                            "name": "龙建国",
+                            "type": "H",
+                            "amount": "200.0",
+                            "percent": "3.57%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2214847054",
+                            "name": "郏占朋",
+                            "type": "H",
+                            "amount": "300.0",
+                            "percent": "5.35%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2323768755",
+                            "name": "楼荣和",
+                            "type": "H",
+                            "amount": "200.0",
+                            "percent": "3.57%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2122219984",
+                            "name": "肖水龙",
+                            "type": "H",
+                            "amount": "150.0",
+                            "percent": "2.67%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2172517962",
+                            "name": "许腾徽",
+                            "type": "H",
+                            "amount": "200.0",
+                            "percent": "3.57%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "1847692015",
+                            "name": "吴水炎",
+                            "type": "H",
+                            "amount": "400.0",
+                            "percent": "7.13%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2287132918",
+                            "name": "高菲",
+                            "type": "H",
+                            "amount": "300.0",
+                            "percent": "5.35%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "1774402743",
+                            "name": "任小艳",
+                            "type": "H",
+                            "amount": "200.0",
+                            "percent": "3.57%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2065481553",
+                            "name": "王伟华",
+                            "type": "H",
+                            "amount": "300.0",
+                            "percent": "5.35%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "1994433149",
+                            "name": "杜建民",
+                            "type": "H",
+                            "amount": "200.0",
+                            "percent": "3.57%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "1804355463",
+                            "name": "凌丽",
+                            "type": "H",
+                            "amount": "300.0",
+                            "percent": "5.35%",
+                            "sh_type": "工商股东",
+                            "children": [],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "745541060",
+                            "name": "深圳妈妈资本管理有限公司",
+                            "type": "C",
+                            "amount": "200.0",
+                            "percent": "3.57%",
+                            "sh_type": "工商股东",
+                            "children": [
+                                {
+                                    "id": "2043401775",
+                                    "name": "沈凌雪",
+                                    "type": "H",
+                                    "amount": "630.0",
+                                    "percent": "6.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2248575069",
+                                    "name": "陈先金",
+                                    "type": "H",
+                                    "amount": "300.0",
+                                    "percent": "2.86%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "1952952066",
+                                    "name": "文斗",
+                                    "type": "H",
+                                    "amount": "300.0",
+                                    "percent": "2.86%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2071607395",
+                                    "name": "王新栋",
+                                    "type": "H",
+                                    "amount": "630.0",
+                                    "percent": "6.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "1774402743",
+                                    "name": "任小艳",
+                                    "type": "H",
+                                    "amount": "3700.0",
+                                    "percent": "35.24%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "563413681",
+                                    "name": "金花投资控股集团有限公司",
+                                    "type": "C",
+                                    "amount": "1050.0",
+                                    "percent": "10.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "1842673855",
+                                            "name": "吴一坚",
+                                            "type": "H",
+                                            "amount": "12800.0",
+                                            "percent": "80.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "1942752174",
+                                            "name": "徐珊珊",
+                                            "type": "H",
+                                            "amount": "640.0",
+                                            "percent": "4.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "563427838",
+                                            "name": "西安金业投资有限公司",
+                                            "type": "C",
+                                            "amount": "1600.0",
+                                            "percent": "10.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "563427927",
+                                            "name": "西安智康物业管理服务有限公司",
+                                            "type": "C",
+                                            "amount": "960.0",
+                                            "percent": "6.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2319279867",
+                                    "name": "广州泽贤投资合伙企业（有限合伙）",
+                                    "type": "C",
+                                    "amount": "630.0",
+                                    "percent": "6.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "2155632378",
+                                            "name": "蔡晓东",
+                                            "type": "H",
+                                            "amount": "19000.0",
+                                            "percent": "95.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2358369084",
+                                            "name": "广州泽贤资产管理有限公司",
+                                            "type": "C",
+                                            "amount": "1000.0",
+                                            "percent": "5.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2352481907",
+                                    "name": "深圳高义股权投资基金合伙企业（有限合伙）",
+                                    "type": "C",
+                                    "amount": "525.0",
+                                    "percent": "5.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "1953396351",
+                                            "name": "文艺",
+                                            "type": "H",
+                                            "amount": "420.0",
+                                            "percent": "40.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "1799867418",
+                                            "name": "农炜",
+                                            "type": "H",
+                                            "amount": "1.05",
+                                            "percent": "0.10%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2080055166",
+                                            "name": "琚泽忠",
+                                            "type": "H",
+                                            "amount": "628.95",
+                                            "percent": "59.90%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2352888807",
+                                    "name": "深圳市创东方富盈投资企业（有限合伙）",
+                                    "type": "C",
+                                    "amount": "2405.0",
+                                    "percent": "22.90%",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "174036393",
+                                            "name": "深圳市创东方投资有限公司",
+                                            "type": "C",
+                                            "amount": "4.81",
+                                            "percent": "0.60%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2560647318",
+                                            "name": "广州正哲投资咨询有限公司",
+                                            "type": "C",
+                                            "amount": "800.0",
+                                            "percent": "99.40%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2350744631",
+                                    "name": "海宁御邦投资管理合伙企业（有限合伙）",
+                                    "type": "C",
+                                    "amount": "330.0",
+                                    "percent": "3.14%",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "2297834999",
+                                            "name": "黄彩霞",
+                                            "type": "H",
+                                            "amount": "50.0",
+                                            "percent": "50.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "25222859",
+                                            "name": "中御资产管理（湖南）有限公司",
+                                            "type": "C",
+                                            "amount": "50.0",
+                                            "percent": "50.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                }
+                            ],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "174036393",
+                            "name": "深圳市创东方投资有限公司",
+                            "type": "C",
+                            "amount": "60.0",
+                            "percent": "1.07%",
+                            "sh_type": "工商股东",
+                            "children": [
+                                {
+                                    "id": "1811662977",
+                                    "name": "刘慧君",
+                                    "type": "H",
+                                    "amount": "125.0",
+                                    "percent": "1.25%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "1808144645",
+                                    "name": "刘创",
+                                    "type": "H",
+                                    "amount": "1250.0",
+                                    "percent": "12.50%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "1786192987",
+                                    "name": "余细凤",
+                                    "type": "H",
+                                    "amount": "300.0",
+                                    "percent": "3.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2122507008",
+                                    "name": "肖珂",
+                                    "type": "H",
+                                    "amount": "125.0",
+                                    "percent": "1.25%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2122219984",
+                                    "name": "肖水龙",
+                                    "type": "H",
+                                    "amount": "500.0",
+                                    "percent": "5.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2057318942",
+                                    "name": "潘锦",
+                                    "type": "H",
+                                    "amount": "250.0",
+                                    "percent": "2.50%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "1811005207",
+                                    "name": "刘建伟",
+                                    "type": "H",
+                                    "amount": "500.0",
+                                    "percent": "5.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2230780737",
+                                    "name": "金昂生",
+                                    "type": "H",
+                                    "amount": "200.0",
+                                    "percent": "2.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "1524119108",
+                                    "name": "首泰投资集团有限公司",
+                                    "type": "C",
+                                    "amount": "700.0",
+                                    "percent": "7.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "1924666495",
+                                            "name": "张小峰",
+                                            "type": "H",
+                                            "amount": "30.0",
+                                            "percent": "0.10%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "365382577",
+                                            "name": "海南第一投资控股集团有限公司",
+                                            "type": "C",
+                                            "amount": "18000.0",
+                                            "percent": "60.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "15604931",
+                                            "name": "海南康桥实业投资有限公司",
+                                            "type": "C",
+                                            "amount": "11970.0",
+                                            "percent": "39.90%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "1125154704",
+                                    "name": "深圳市明达资产管理有限公司",
+                                    "type": "C",
+                                    "amount": "300.0",
+                                    "percent": "3.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "2289722275",
+                                            "name": "魏永录",
+                                            "type": "H",
+                                            "amount": "10.0",
+                                            "percent": "1.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2123477959",
+                                            "name": "肖鹏",
+                                            "type": "H",
+                                            "amount": "50.0",
+                                            "percent": "5.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "1931160199",
+                                            "name": "张维忠",
+                                            "type": "H",
+                                            "amount": "10.0",
+                                            "percent": "1.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2104235480",
+                                            "name": "童开春",
+                                            "type": "H",
+                                            "amount": "10.0",
+                                            "percent": "1.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2123295652",
+                                            "name": "肖铭石",
+                                            "type": "H",
+                                            "amount": "10.0",
+                                            "percent": "1.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "1215750638",
+                                            "name": "深圳市创东方时代投资有限公司",
+                                            "type": "C",
+                                            "amount": "100.0",
+                                            "percent": "10.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "1499668557",
+                                            "name": "深圳市明汇达投资咨询有限公司",
+                                            "type": "C",
+                                            "amount": "810.0",
+                                            "percent": "81.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "805029290",
+                                    "name": "深圳市安凯源实业发展有限公司",
+                                    "type": "C",
+                                    "amount": "3750.0",
+                                    "percent": "37.50%",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "2122219984",
+                                            "name": "肖水龙",
+                                            "type": "H",
+                                            "amount": "200.0",
+                                            "percent": "40.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2122904892",
+                                            "name": "肖舒月",
+                                            "type": "H",
+                                            "amount": "200.0",
+                                            "percent": "40.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2020366206",
+                                            "name": "梁敏芳",
+                                            "type": "H",
+                                            "amount": "100.0",
+                                            "percent": "20.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "324846677",
+                                    "name": "深圳市创东方吉利投资企业（有限合伙）",
+                                    "type": "C",
+                                    "amount": "2000.0",
+                                    "percent": "20.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "2057318942",
+                                            "name": "潘锦",
+                                            "type": "H",
+                                            "amount": "1.25",
+                                            "percent": "12.50%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2230780737",
+                                            "name": "金昂生",
+                                            "type": "H",
+                                            "amount": "1.0",
+                                            "percent": "10.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "1811662977",
+                                            "name": "刘慧君",
+                                            "type": "H",
+                                            "amount": "0.625",
+                                            "percent": "6.25%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2122507008",
+                                            "name": "肖珂",
+                                            "type": "H",
+                                            "amount": "0.625",
+                                            "percent": "6.25%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2122219984",
+                                            "name": "肖水龙",
+                                            "type": "H",
+                                            "amount": "0.1",
+                                            "percent": "1.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "805029290",
+                                            "name": "深圳市安凯源实业发展有限公司",
+                                            "type": "C",
+                                            "amount": "6.4",
+                                            "percent": "64.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                }
+                            ],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "232708460",
+                            "name": "义乌市风驰电子商务有限公司",
+                            "type": "C",
+                            "amount": "200.0",
+                            "percent": "3.57%",
+                            "sh_type": "工商股东",
+                            "children": [
+                                {
+                                    "id": "1899474732",
+                                    "name": "尹祚芹",
+                                    "type": "H",
+                                    "amount": "2.0",
+                                    "percent": "20.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2225129888",
+                                    "name": "郭慧",
+                                    "type": "H",
+                                    "amount": "8.0",
+                                    "percent": "80.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                }
+                            ],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2355948070",
+                            "name": "杭州永增科技有限公司",
+                            "type": "C",
+                            "amount": "300.0",
+                            "percent": "5.35%",
+                            "sh_type": "工商股东",
+                            "children": [
+                                {
+                                    "id": "1966134969",
+                                    "name": "曹泽梅",
+                                    "type": "H",
+                                    "amount": "250.0",
+                                    "percent": "25.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2069410463",
+                                    "name": "王小月",
+                                    "type": "H",
+                                    "amount": "100.0",
+                                    "percent": "10.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "1783315877",
+                                    "name": "何鸿玉",
+                                    "type": "H",
+                                    "amount": "650.0",
+                                    "percent": "65.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                }
+                            ],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        },
+                        {
+                            "id": "2436855556",
+                            "name": "东莞金炎投资合伙企业（有限合伙）",
+                            "type": "C",
+                            "amount": "500.0",
+                            "percent": "8.91%",
+                            "sh_type": "工商股东",
+                            "children": [
+                                {
+                                    "id": "1965738157",
+                                    "name": "曹春波",
+                                    "type": "H",
+                                    "amount": "250.25",
+                                    "percent": "25.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2012477351",
+                                    "name": "林锦超",
+                                    "type": "H",
+                                    "amount": "500.5",
+                                    "percent": "50.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                },
+                                {
+                                    "id": "2320346407",
+                                    "name": "广东金火投资管理有限公司",
+                                    "type": "C",
+                                    "amount": "250.25",
+                                    "percent": "25.00%",
+                                    "sh_type": "工商股东",
+                                    "children": [
+                                        {
+                                            "id": "2012477351",
+                                            "name": "林锦超",
+                                            "type": "H",
+                                            "amount": "1300.0",
+                                            "percent": "13.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2054248642",
+                                            "name": "潘丽娜",
+                                            "type": "H",
+                                            "amount": "1000.0",
+                                            "percent": "10.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2056634136",
+                                            "name": "潘碧红",
+                                            "type": "H",
+                                            "amount": "600.0",
+                                            "percent": "6.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "1965738157",
+                                            "name": "曹春波",
+                                            "type": "H",
+                                            "amount": "333.0",
+                                            "percent": "3.33%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "1922555466",
+                                            "name": "张友军",
+                                            "type": "H",
+                                            "amount": "4767.0",
+                                            "percent": "47.67%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        },
+                                        {
+                                            "id": "2960594761",
+                                            "name": "东莞金璞投资合伙企业（有限合伙）",
+                                            "type": "C",
+                                            "amount": "2000.0",
+                                            "percent": "20.00%",
+                                            "sh_type": "工商股东",
+                                            "children": [],
+                                            "regCapital": null,
+                                            "parentName": null,
+                                            "actualHolding": false
+                                        }
+                                    ],
+                                    "regCapital": null,
+                                    "parentName": null,
+                                    "actualHolding": false
+                                }
+                            ],
+                            "regCapital": null,
+                            "parentName": null,
+                            "actualHolding": false
+                        }
+                    ],
+                    "regCapital": null,
+                    "parentName": null,
+                    "actualHolding": false
+                }
+            ],
+            "regCapital": "301.6283",
+            "parentName": null,
+            "actualHolding": true
+        }
+    }
+}

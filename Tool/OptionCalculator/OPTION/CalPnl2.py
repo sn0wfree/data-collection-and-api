@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 class CalPnl():
     # this class will help to calculate the profit or Loss of one option
     # contract
@@ -11,7 +12,6 @@ class CalPnl():
         currentUnderlyingPrice
         OptionType,Count,action"""
         self.CalMaxMinChange = CalMaxMinChange()
-        self.Period = []
 
         pass
 
@@ -20,46 +20,32 @@ class CalPnl():
         return version
 
     def AddCalMargin(self, lastDayConSettlementPrice, LastCloseUndeylingPrice, StrikePrice, currentUnderlyingPrice, OptionType, Count, action, exchangerate=100 * 100, OptionFormat='E'):
+
         self.CalMargin = CalMargin(lastDayConSettlementPrice, LastCloseUndeylingPrice, StrikePrice,
                                    currentUnderlyingPrice, OptionType, Count, action, exchangerate=exchangerate, OptionFormat=OptionFormat)
         return self.CalMargin.OpenMarginRule()
 
-    def GeneratePeriod(self, High, Low, gap=0.001):
-        if len(self.Period) == 0 or self.Period == None:
-            self.Period = np.arange(Low, High, gap)
-        else:
-            if isinstance(self.Period, (list, set, tuple, np.array, pd.Series)):
-                self.Period = givenP
-
-            else:
-                raise ValueError('Unknown Period Type')
-
-    def MaturityPnLFree(self, b, Strike, currentUnderlyingPrice, ContractNum, action, OptionType, gap=0.001, exchangerate=100 * 100):
-
-        High = currentUnderlyingPrice * (1 + 1 / gap)
-        Low = currentUnderlyingPrice * (gap)
-        self.GeneratePeriod(High, Low, gap)
+    def MaturityPnLFree(self, b, Strike, currentUnderlyingPrice, ContractNum, action, OptionType, w=3, n=1000, exchangerate=100 * 100):
+        w = w * n
         #pricelist=np.array([currentUnderlyingPrice*(draft/float(w)+1) for draft in xrange(1-w,1+w,1)])
-        out = [(price, self.CalProfitOrLossofMaturityVersion1(b, Strike, price, ContractNum,
-                                                              action, OptionType, exchangerate=exchangerate)) for price in self.Period]
+        out = [(currentUnderlyingPrice * (draft / float(w) + 1), self.CalProfitOrLossofMaturityVersion1(b, Strike, currentUnderlyingPrice *
+                                                                                                        (draft / float(w) + 1), ContractNum, action, OptionType, exchangerate=exchangerate)) for draft in xrange(1 - w, 1 + w, 1)]
 
         return pd.DataFrame(out, columns=['UnderlyingPrice', 'PnL'])
 
-    def MaturityPnLHigh_Low(self, b, Strike, currentUnderlyingPrice, ContractNum, action, OptionType, LastCloseUndeylingPrice, gap=0.001, exchangerate=100 * 100):
+    def MaturityPnLHigh_Low(self, b, Strike, currentUnderlyingPrice, ContractNum, action, OptionType, LastCloseUndeylingPrice, w=3, n=1000, exchangerate=100 * 100):
         Highchange, Lowchange = self.CalMaxMinChange.getBoundry(
             LastCloseUndeylingPrice, Strike, OptionType)
         High = currentUnderlyingPrice * (1 + Highchange)
         Low = currentUnderlyingPrice * (1 - Highchange)
-        """if float(High-Low) <20.0/n:
-            gap=float(High-Low)/20
+        if float(High - Low) < 20.0 / n:
+            gap = float(High - Low) / 20
         else:
-            gap=1.0/n"""
-        # gap=float(High-Low)/n
+            gap = 1.0 / n
         #np.arange(Low, High, gap)
-        # print High,Low
-        self.GeneratePeriod(High, Low, gap)
+        print High, Low
         out = [(price, self.CalProfitOrLossofMaturityVersion1(b, Strike, price, ContractNum,
-                                                              action, OptionType, exchangerate=exchangerate)) for price in self.Period]
+                                                              action, OptionType, exchangerate=exchangerate)) for price in np.arange(Low, High, gap)]
         return pd.DataFrame(out, columns=['UnderlyingPrice', 'PnL'])
 
     def CalPnlofMaturityV1(self, BuyorSellPrice, StrikePrice, currentUnderlyingPrice, ContractNum, action, OptionType, exchangerate=100 * 100):
@@ -105,6 +91,7 @@ class CalPnl():
                 G = VirtualSellObtainMoney - VirtualBuySpendMoney
             else:
                 G = 0
+
         else:
             raise ValueError('Unknown OptionType: %s' % OptionType)
         OptionFee = BuyorSellPrice  # RealCost
@@ -227,6 +214,6 @@ class CalMargin():
             else:
                 raise ValueError('Unknown OptionType: %s' % self.OptionType)
 
-"""StrikePrice=2.45
-LastCloseUndeylingPrice=2.637
-max(LastCloseUndeylingPrice-StrikePrice,0)#CalOutofMoney虚值期权"""
+StrikePrice = 2.45
+LastCloseUndeylingPrice = 2.637
+max(LastCloseUndeylingPrice - StrikePrice, 0)  # CalOutofMoney虚值期权
