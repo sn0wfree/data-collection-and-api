@@ -1,3 +1,4 @@
+#coding=utf8
 from inspect import signature
 from functools import wraps
 
